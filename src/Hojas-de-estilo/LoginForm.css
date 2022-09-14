@@ -1,0 +1,158 @@
+:root {
+    --Color1: #0B132B;
+    --Color2: #1C2541;
+    --Color3: #3A506B;
+    --Color4: #3E6585;
+    --Color5: #A8C0DE;
+    --Color6: #D9D9D9;
+    --VerdeFuerte: #2D750C;
+    --VerClaro: #40A611;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.BoxImgPage {
+    background-color: var(--Color2);
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    border-radius: 10rem;
+    top: 9%;
+    border: 10px solid var(--Color6);
+
+}
+
+.ContainerLogin {
+    display: flex;
+    background-color: var(--Color2);
+    width: 70rem;
+    height: 55rem;
+    box-shadow: 0px 4px 40px 10px rgb(0 0 0 / 90%);
+    border-radius: 2.5rem;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.ContainerLogin form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.BoxTitle {
+    height: 20%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.TitleText {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 4.5rem;
+}
+
+.DataLoginBox {
+    /* height: 80%; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.DataLoginBox label {
+    font-weight: bold;
+    font-size: 3rem;
+    color: whitesmoke
+}
+
+.InpStyle {
+    width: 100%;
+    box-shadow: 0px 0px 20px 10px #000000;
+    border-radius: 15px;
+    height: 4.5rem;
+    background-color: var(--Color6);
+    margin: 2rem 0 2rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+
+
+}
+
+.TwoButtons {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    height: 6rem;
+}
+
+.InpSubmit {
+    height: 6rem;
+    width: 12rem;
+    background-color: var(--VerdeFuerte);
+    transition: all 0.5s;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.InpSubmit:hover {
+    background-color: var(--VerClaro);
+    color: var(--Color6);
+    box-shadow: inset 0px 0px 11px 10px rgba(0, 0, 0, 0.46);
+
+}
+
+.InpRegistrarse {
+    width: 12rem;
+    height: 6rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Color6);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.5s;
+}
+
+.InpRegistrarse:hover {
+    box-shadow: inset 0px 0px 11px 10px rgba(0, 0, 0, 0.46);
+}
