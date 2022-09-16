@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../Hojas-de-estilo/LoginForm.css';
 
 function LoginForm() {
@@ -17,7 +18,8 @@ function LoginForm() {
                     <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpLogInPsw" />
                     <div className='TwoButtons'>
                         <input className='InpSubmit' type="submit" value="Ingresar" />
-                        <a className='InpRegistrarse' href="http://">Registrase</a>
+                        {/* <a className='InpRegistrarse' href="http://">Registrase</a> */}
+                        <Link className='InpRegistrarse' to="/CrearCueanta">Registrase</Link>
                     </div>
                 </div>
             </form >

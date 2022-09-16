@@ -1,25 +1,10 @@
-import React, { useState } from "react";
+
 import '../Hojas-de-estilo/CreateAccount.css';
+
+import { Link } from 'react-router-dom';
 
 
 function CreateAccount() {
-    const [imgPreview, setImgPreview] = useState(null);
-    const [error, setError] = useState(false);
-    const handleImageChange = (e) => {
-        const selected = e.target.files[0];
-        const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg"];
-        if (selected && ALLOWED_TYPES.includes(selected.type)) {
-            let reader = new FileReader();
-            reader.onloadend = () => {
-                setImgPreview(reader.result);
-
-            };
-            reader.readAsDataURL(selected);
-        } else {
-            setError(true);
-            console.log("Arhivo no soportado")
-        }
-    };
 
     return (
         <div>
@@ -41,25 +26,20 @@ function CreateAccount() {
                             <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccConfPsw" />
                         </div>
                         <div className="ContainerImgCreateAccount">
-                            <div className="BoxImageCreateAccout"
-
-                                style={{
-                                    backgroundImage: imgPreview
-                                        ? 'url("${imgPreview}")'
-                                        : "#40A611"
-                                }}
-                            >
+                            <div className="BoxImageCreateAccout">
 
 
                             </div>
                             <label className="labelFileUploaed" htmlFor="InptFileCreateAccount" >Imagen de perfil</label>
-                            <input className="InpFileStyle" type="file" name="" id="InptFileCreateAccount" onChange={handleImageChange} />
+                            <input className="InpFileStyle" type="file" name="" id="InptFileCreateAccount" />
                         </div>
                     </div>
 
                     <div className='TwoButtons'>
-                        <input className='InpSubmit' type="submit" value="Ingresar" />
-                        <a className='InpRegistrarse' href="http://">Registrase</a>
+                        <input className='InpSubmit' type="submit" value="Registrase" />
+                        {/* <a className='InpRegistrarse' href="http://">Log in</a> */}
+
+                        <Link className='InpRegistrarse' to="/">Log in</Link>
                     </div>
                 </form >
             </div >
