@@ -17,7 +17,6 @@ function App() {
           <Route path='/' element={<LoginForm />} />
           <Route path='/CrearCueanta' element={<CreateAccount />} />
           <Route path='/UserPage/*' element={<UserPage />} />
-
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </div>
