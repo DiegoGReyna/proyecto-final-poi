@@ -9,6 +9,15 @@ function NavBarChats() {
       </div>
       <div className='Container_ChatsButtons'>
       <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
+      <PrivChatButton />
       </div>
     </div>
   )
