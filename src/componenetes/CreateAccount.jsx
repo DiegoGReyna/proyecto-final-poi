@@ -1,6 +1,6 @@
 
 import '../Hojas-de-estilo/CreateAccount.css';
-
+import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 
 
@@ -24,6 +24,12 @@ function CreateAccount() {
                             <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccPsw" />
                             <label htmlFor="InpCreatAccConfPsw">Confirmar contraseña</label>
                             <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccConfPsw" />
+                            <label htmlFor="Id_SelectCarrera">Carrera</label>
+                            <Form.Select className='Custom_Select'  id='Id_SelectCarrera' size='lg'>
+                            <option value="0">Seleccione una carrera</option>
+                                <option value="1">LMAD</option>
+                                <option value="2">LCC</option>
+                            </Form.Select>
                         </div>
                         <div className="ContainerImgCreateAccount">
                             <div className="BoxImageCreateAccout">

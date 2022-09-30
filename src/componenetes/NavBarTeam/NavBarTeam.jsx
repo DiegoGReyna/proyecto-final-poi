@@ -8,7 +8,7 @@ export default function NavBarTeam() {
             <NavLink className='TeamNavLinkNombreEquipo' to=''>
                 <div className='ImgTeam'></div> Nombre del Equipos</NavLink>
             <NavLink className='TeamNavLink' to=''>Tareas</NavLink>
-            <NavLink className='TeamNavLink' to='/UserPage/Equipo/ChatEquipo'>Chat de quipo</NavLink>
+            <NavLink className='TeamNavLink' to='/UserPage/SubGrupos/ChatEquipo'>Chat de quipo</NavLink>
             <NavLink className='TeamNavLink' to=''>Integrantes</NavLink>
 
 

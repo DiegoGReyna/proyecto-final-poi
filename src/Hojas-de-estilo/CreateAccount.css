@@ -1,10 +1,12 @@
 :root {
     --Color1: #0B132B;
     --Color2: #1C2541;
+    --Color2_5:#323D5F;
     --Color3: #3A506B;
     --Color4: #3E6585;
     --Color5: #A8C0DE;
     --Color6: #D9D9D9;
+    
     --VerdeFuerte: #2D750C;
     --VerClaro: #40A611;
 }
@@ -57,12 +59,13 @@ html {
 }
 
 .BoxTitle {
-    height: 20%;
+    height: 15%;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .TitleText {
@@ -78,6 +81,8 @@ html {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 70%;
+
 }
 
 .DataCreateAccountBox label {
@@ -89,8 +94,8 @@ html {
 .InpStyle {
     width: 100%;
     box-shadow: 0px 0px 20px 10px #000000;
-    border-radius: 15px;
-    height: 4.5rem;
+    border-radius: 10px;
+    height: 3.5rem;
     background-color: var(--Color6);
     margin: 2rem 0 2rem 0;
     font-family: 'Poppins', sans-serif;
@@ -111,6 +116,7 @@ html {
     justify-content: center;
     font-family: 'Poppins', sans-serif;
     height: 6rem;
+    height: 15%;
 }
 
 .InpSubmit {
@@ -163,6 +169,9 @@ html {
     flex-direction: column;
     align-items: center;
 }
+.ContainerInfoCreateAccount label:hover{
+background: none;
+}
 
 .ContainerImgCreateAccount {
     width: 50%;
@@ -190,6 +199,35 @@ html {
 .ContainerImgCreateAccount .labelFileUploaed {
     color: var(--Color5);
     cursor: pointer;
+    background-color: var(--Color4);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    transition: all 0.4s;
+
+}
+.ContainerImgCreateAccount .labelFileUploaed:hover{
+    background-color: var(--Color2_5);
+    color: var(--Color1);
+    
+}
+.Custom_Select{
+    width: 100%;
+}
+
+
+.Custom_Select {
+    width: 100%;
+    box-shadow: 0px 0px 20px 10px #000000;
+    border-radius: 5px;
+    height: 3.5rem;
+    background-color: var(--Color6);
+    margin: 2rem 0 2rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
 
 
 }

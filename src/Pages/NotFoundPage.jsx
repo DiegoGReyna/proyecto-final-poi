@@ -1,6 +1,8 @@
-
+import './NotFoundPage.css'
 export default function NotFoundPage() {
     return (
-        <div>404 NotFound</div>
+        <div className='Container_PageNotFaound' >
+            <p>404 NotFound</p>
+            </div>
     )
 }

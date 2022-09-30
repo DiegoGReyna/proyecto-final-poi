@@ -1,0 +1,44 @@
+.Container_NavBarChats{
+    background-color: var(--Color2_5);
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Container_ChatsButtons{
+    height: 90%;
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Container_Button{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Button_Nav{
+    height: 50%;
+    width: 70%;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: var(--Color5);
+    cursor: pointer;
+    color: var(--Color6);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75vw;
+    color: var(--Color6);
+    font-weight:bold;
+    transition: all 0.4s;
+}
+.Button_Nav:hover{
+    background-color: var(--Color6);
+    color: var(--Color1);
+}

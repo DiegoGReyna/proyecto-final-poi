@@ -1,15 +1,15 @@
 import React from 'react'
 import './MessaByUser.css'
-function MessaByUser() {
+function MessaByUser(props) {
   return (
     <div className='Container_MessagesByUser'>
         <dir className="Box_MessagesByUser" >
         <div className="Box_MessagesByUser_TextTime">
             <div className="Box_MessagesByUser_Time">
-            <p>2:25pm</p>
+            <p>{props.sendedTime}</p>
             </div>
         <div className="Box_MessagesByUser_Text">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum.</p>
+        <p>{props.text}</p>
         </div>
         </div>
     </dir>

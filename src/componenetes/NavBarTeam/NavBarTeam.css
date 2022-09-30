@@ -12,7 +12,7 @@
 .TeamNavLinkNombreEquipo {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1vw;
     color: var(--Color6);
     font-weight: bold;
     display: flex;
@@ -30,7 +30,7 @@
 .TeamNavLink {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1vw;
     color: var(--Color6);
     font-weight: bold;
     display: flex;

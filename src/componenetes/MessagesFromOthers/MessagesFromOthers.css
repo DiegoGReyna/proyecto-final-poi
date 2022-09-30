@@ -20,8 +20,9 @@
 }
 .Box_MessagesFromOthers_UserImage{
     background-color: var(--Color4);
-    width: 20%;
-    height: 100%;
+    width: 7vw;
+    height: 7vw;
+    /* margin-right: 1rem; */
     border-radius: 100%;
    
 }
@@ -57,4 +58,10 @@
     height: 75%;
     font-family: 'Poppins', sans-serif;
     font-size: 1vw;
+}
+.Box_MessagesFromOthers_UserImage img{
+    width: 7vw;
+    height: 7vw;
+    /* margin-right: 1rem; */
+    border-radius: 100%;
 }
