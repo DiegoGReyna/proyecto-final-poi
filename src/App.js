@@ -23,7 +23,6 @@ function App() {
           
           <Route path='/UserPage/*' element={<UserPage />} />
           <Route path='/Chats/*' element={<ChatsPage />} />
-          {/* <Route path='/PrivChat/*' element={<PrivChatPage />}/> */}
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </div>
