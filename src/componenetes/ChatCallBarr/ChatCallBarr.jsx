@@ -19,46 +19,52 @@ function ChatCallBarr() {
             <div className='modal'>
             <div className='overlay'></div>
             <div className='modal_content'>
-            <div className='Container_CancelModal'>
-                <button
-                className='Button_Cancel'
-                onClick={toggleModalCall}
-                >X
-                </button>
-            </div>
-            <h2 className='TitleText' >LLamada</h2>
-            <form className='Form_Modal' action="">
-                
-                
-                <button  className='Button_Nav' 
-                onClick={toggleModalCall}
-                type="submit"></button>
+           
+            <h2 className='TitleText' >LLamada en curso</h2>
+          
+                <div  className='Container_UserCallOption' >
+                  <div className='Container_Call'>
+                    <div className='Image_User' >
+                       <img src={require('../../img/perro.jpg')} alt="" />
+                    </div>
+                    <p>Nombre de usuario</p>
+                  </div>
+                  <div className='Container_CallOption'>
+                  <button
+                    className='Button_Mute'>
+                    </button>
+                  <button  className='Button_HangUp'
+                    onClick={toggleModalCall}>
 
-            </form>
+                  </button>
+                  </div>
+                </div>
+            
             </div>
         </div>
       )}
-
       {modalVideoCall && (
                   <div className='modal'>
                   <div className='overlay'></div>
                   <div className='modal_content'>
-                  <div className='Container_CancelModal'>
+                  <h2 className='TitleText' >Video llamada en curso</h2>
+                    <div  className='Container_UserCallOption' >
+                    <div className='Container_Call'>
+                      <div className='Image_User' >
+                        <img src={require('../../img/perro.jpg')} alt="" />
+                      </div>
+                      <p>Nombre de usuario</p>
+                    </div>
+                    <div className='Container_CallOption'>
                       <button
-                      className='Button_Cancel'
-                      onClick={toggleModalVideoCall}
-                      >X
-                      </button>
-                  </div>
-                  <h2 className='TitleText' >Video LLamada</h2>
-                  <form className='Form_Modal' action="">
-                      
-                     
-                      <button  className='Button_Nav' 
-                      onClick={toggleModalVideoCall}
-                      type="submit"></button>
+                        className='Button_Mute'>
+                        </button>
+                      <button  className='Button_HangUpVideoCall'
+                        onClick={toggleModalVideoCall}>
 
-                  </form>
+                      </button>
+                    </div>
+                </div>
                   </div>
               </div>
             )}
