@@ -15,7 +15,7 @@ function LoginForm() {
     }
     return (
         <div className='ContainerLogin'>
-            <div className='BoxImgPage'><img src="" alt="" /></div>
+            {/* <div className='BoxImgPage'><img src="" alt="" /></div> */}
             <form onSubmit={handleSubmit}>
                 <div className='BoxTitle'>
                     <h2 className='TitleText'>Inicar secion</h2>
