@@ -2,26 +2,33 @@
 import React,{useState}from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import '../Hojas-de-estilo/LoginForm.css';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
-function LoginForm() {
+const  LoginForm = () => {
     const [UserEmail,setUserEmail]=useState("");
     const [UserPassword,setUserPassword]=useState("");
     const navigate=useNavigate();
-    const handleSubmit=(e)=>{
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate('/UserPage')
+        
        
-        console.log(`${UserEmail},${UserPassword}`);
+        try{
+            await signInWithEmailAndPassword(auth, UserEmail, UserPassword);
+            navigate('/UserPage');
+        }catch(err){
+            console.log(err);
+        }
     }
     return (
         <div className='ContainerLogin'>
-            {/* <div className='BoxImgPage'><img src="" alt="" /></div> */}
             <form onSubmit={handleSubmit}>
                 <div className='BoxTitle'>
-                    <h2 className='TitleText'>Inicar secion</h2>
+                    <h2 className='TitleText'>Inicar sesión</h2>
                 </div>
                 <div className='DataLoginBox'>
-                    <label htmlFor="InpLogInMail">Correo electronico</label>
+                    <label htmlFor="InpLogInMail">Correo electrónico</label>
                     <input className='InpStyle' 
                         placeholder='Correo electronico' 
                         type="email" 
@@ -40,8 +47,7 @@ function LoginForm() {
                         value={UserPassword}
                     />
                     <div className='TwoButtons'>
-                        {/* <a className='InpRegistrarse' href="http://">Registrase</a> */}
-                        <Link className='InpRegistrarse' to="/CrearCueanta">Registrase</Link>
+                        <Link className='InpRegistrarse' to="/CrearCuenta">Registrase</Link>
                         <input className='InpSubmit' type="submit" value="Ingresar" />
                     </div>
                 </div>
