@@ -39,6 +39,7 @@ const CreateAccount = () => {
                         uid: res.user.uid,
                         UserName,
                         UserEmail,
+                        UserCarrera : UserCarrera,
                         photoURL : downloadURL
                     });
                     await setDoc(doc(db, "userChats", res.user.uid), {});
@@ -103,6 +104,11 @@ const CreateAccount = () => {
                                 <option value="0">Seleccione una carrera</option>
                                 <option value="LMAD">LMAD</option>
                                 <option value="LCC">LCC</option>
+                                <option value="LSTI">LSTI</option>
+                                <option value="LM">LM</option>
+                                <option value="LA">LA</option>
+                                <option value="LF">LF</option>
+
                             </Form.Select>
                         </div>
                         <div className="ContainerImgCreateAccount">

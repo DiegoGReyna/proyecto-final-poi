@@ -11,7 +11,7 @@ const UserPage = () => {
     return (
         <div className='ContainerUserPage'>
             <NavBarMain 
-            grupo="LMAD"
+            grupo=""
             />
             <Routes>
                 <Route path="SubGrupos/*" element={<DashboardSubGrups />} />

@@ -3,8 +3,9 @@ import LoginForm from './componenetes/LoginForm';
 import CreateAccount from './componenetes/CreateAccount';
 import NotFoundPage from './Pages/NotFoundPage'
 import UserPage from './Pages/UserPage/UserPage';
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChatsPage from './Pages/ChatsPage/ChatsPage';
+
 
 
 function App() {

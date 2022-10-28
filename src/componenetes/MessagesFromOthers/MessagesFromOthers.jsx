@@ -1,7 +1,10 @@
 import React from 'react'
 import './MessagesFromOthers.css'
 
-function MessagesFromOthers(props) {
+function MessagesFromOthers(props){
+
+console.log("MessagesFromOthers:",props);
+
   return (
     <div className='Container_MessageFromOthers'>
       <dir className="Box_MessagesFromOthers" >
