@@ -1,11 +1,16 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import './PrivChatPage.css'
 import PrivChat from '../../componenetes/PrivChat/PrivChat'
 import ChatCallBarr from '../../componenetes/ChatCallBarr/ChatCallBarr'
-function PrivChatPage() {
+
+const PrivChatPage = () => {
+  const location = useLocation()
+  const { userToUID } = location.state;
+
   return (
     <div className='Container_PrivChatPage'>
-        <ChatCallBarr/> 
+        <ChatCallBarr userToUID={userToUID}/> 
         <PrivChat/>    
     </div>
   )

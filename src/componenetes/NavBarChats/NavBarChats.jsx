@@ -1,25 +1,35 @@
-import React,{useState} from 'react'
+import { doc, onSnapshot, collection } from "firebase/firestore";
+import React, { useEffect, useState, useContext} from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+import {db} from "../../firebase"
 import './NavBarChats.css'
 import PrivChatButton from '../PrivChatButton/PrivChatButton'
-function NavBarChats() {
 
+const NavBarChats = () => {
   const [modal ,setModal]=useState(false);
+  const [chats, setChats] = useState([]);
+
+    const {currentUser} = useContext(AuthContext);
+    const {dispatch} = useContext(ChatContext);
+
+    useEffect(() =>{
+      const newChat = onSnapshot(collection(db, 'users'), (snapshot) =>{
+      setChats(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
+      });
+      return newChat
+    }, [currentUser.uid]);
+
   const toggleModal=()=>{
     setModal(!modal)
   }
+
   return (
     <div className='Container_NavBarChats'>
       {modal && (
         <div className='modal'>
         <div className='overlay'></div>
         <div className='modal_content'>
-          <div className='Container_CancelModal'>
-            <button
-            className='Button_Cancel'
-              onClick={toggleModal}
-            >X
-            </button>
-          </div>
           <h2 className='TitleText' >Agregar chat</h2>
           <form className='Form_Modal' action="">
             
@@ -42,28 +52,25 @@ function NavBarChats() {
         </button>
       </div>
       <div className='Container_ChatsButtons'>
-      <PrivChatButton 
-      userName="Nombre de usuario"
-      imagen='perro'
-      />
-      <PrivChatButton 
-      userName="usuario 1"
-      imagen='perro_4'
-      />
+
+      {/*Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+               <div>{chat[1].UserName}</div>
+      ))*/}
+
+      {
+        chats.map(chat => 
+          chat.uid != currentUser.uid ?
+          <PrivChatButton 
+          userName={chat.UserName}
+          imagen={chat.photoURL}
+          uid ={chat.uid}
+          />
+          : null
+          )
+      }
       
-      <PrivChatButton 
-       userName="usuario 2"
-       imagen='perro_2'
-       />
-      <PrivChatButton 
-       userName="usuario 3"
-       imagen='perro_3'
-      />
-      <PrivChatButton 
-       userName="usuario 4"
-       imagen='perro_2'
-      />
-      
+
+
       </div>
     </div>
   )

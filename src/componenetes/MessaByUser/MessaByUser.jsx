@@ -1,6 +1,8 @@
 import React from 'react'
 import './MessaByUser.css'
+
 function MessaByUser(props) {
+  console.log("MessaByUser:", props)
   return (
     <div className='Container_MessagesByUser'>
         <dir className="Box_MessagesByUser" >
