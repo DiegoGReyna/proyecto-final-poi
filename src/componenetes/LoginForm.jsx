@@ -40,7 +40,7 @@ const  LoginForm = () => {
                     <label htmlFor="InpLogInPsw">Contraseña</label>
                     <input className='InpStyle' 
                         placeholder='Contraseña' 
-                        type="password" 
+                        type="password"
                         name="" 
                         id="InpLogInPsw" 
                         onChange={(e)=>setUserPassword(e.target.value)}

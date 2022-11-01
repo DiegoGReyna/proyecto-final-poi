@@ -5,6 +5,8 @@ import DashboardSubGrups from '../DashboardSubGrups/DashboardSubGrups.jsx';
 import ChatsPage from '../ChatsPage/ChatsPage';
 import SubGrupPage from '../SubGrupPage/SubGrupPage';
 import RenderedMessages from '../../componenetes/RenderedMessages/RenderedMessages';
+import { Perfil } from '../../componenetes/Perfil/Perfil';
+import { Tareas } from '../../componenetes/Tareas/Tareas';
 
 const UserPage = () => {
     
@@ -18,6 +20,8 @@ const UserPage = () => {
                 <Route path="SubGrupos/SubGrupo/*"element={<SubGrupPage />}/>
                 <Route path="Chats/*" element={<ChatsPage />} /> 
                 <Route path="ChatEquipo/*" element={<RenderedMessages />} />
+                <Route path="Perfil" element={<Perfil />} />
+                <Route path="Tareas" element={<Tareas />} />
             </Routes>
             
         </div>
