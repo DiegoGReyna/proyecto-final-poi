@@ -1,16 +1,11 @@
 import React from 'react'
-import './MessagesFromOthers.css'
+import './MessagesFromOthersGroup.css'
 
-function MessagesFromOthers(props){
-
+function MessagesFromOthersGroup(props){
 
   return (
     <div className='Container_MessageFromOthers'>
       <dir className="Box_MessagesFromOthers" >
-        <div className="Box_MessagesFromOthers_UserImage">
-          <img src={require(`../../img/perro.jpg`)} alt="UserImage"  />
-
-        </div>
         <div className="Box_MessagesFromOthers_UserTextTime">
           <div className="Box_MessagesFromOthers_UserTime">
             <div className="Box_MessagesFromOthers_User">
@@ -30,4 +25,4 @@ function MessagesFromOthers(props){
   )
 }
 
-export default MessagesFromOthers
+export default MessagesFromOthersGroup

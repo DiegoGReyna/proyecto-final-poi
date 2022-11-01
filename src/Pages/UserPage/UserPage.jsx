@@ -15,7 +15,7 @@ const UserPage = () => {
             />
             <Routes>
                 <Route path="SubGrupos/*" element={<DashboardSubGrups />} />
-                <Route  path="SubGrupos/SubGrupo/*"element={<SubGrupPage />}/>
+                <Route path="SubGrupos/SubGrupo/*"element={<SubGrupPage />}/>
                 <Route path="Chats/*" element={<ChatsPage />} /> 
                 <Route path="ChatEquipo/*" element={<RenderedMessages />} />
             </Routes>

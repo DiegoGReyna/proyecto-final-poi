@@ -1,0 +1,65 @@
+.Container_MessageFromOthers{
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.Box_MessagesFromOthers{
+    
+    width: 50%;
+    height: 15rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly
+    
+}
+.Box_MessagesFromOthers_UserImage{
+    background-color: var(--Color4);
+    width: 7vw;
+    height: 7vw;
+    /* margin-right: 1rem; */
+    border-radius: 100%;
+   
+}
+.Box_MessagesFromOthers_UserTime{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    height: 15%;
+}
+.Box_MessagesFromOthers_User{
+    font-size: 1.1vw;
+    font-weight: bold;
+}
+.Box_MessagesFromOthers_Time{
+    font-size: 0.8vw;
+    
+}
+.Box_MessagesFromOthers_UserTextTime{
+    width: 75%;
+    background-color: var(--Color5);
+    height: 100%;
+    box-shadow: 0px 4px 15px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Box_MessagesFromOthers_Text{
+    width: 95%;
+    height: 75%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1vw;
+}
+.Box_MessagesFromOthers_UserImage img{
+    width: 7vw;
+    height: 7vw;
+    /* margin-right: 1rem; */
+    border-radius: 100%;
+}

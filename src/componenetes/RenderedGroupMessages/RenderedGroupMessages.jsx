@@ -1,61 +1,52 @@
-import { doc, onSnapshot, collection, query, where } from "firebase/firestore";
+import { doc, onSnapshot, collection } from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
-import './RenderedMessages.css'
-import MessagesFromOthers from '../MessagesFromOthers/MessagesFromOthers';
+import './RenderedGroupMessages.css'
+import MessagesFromOthers from '../MessagesFromOthersGroup/MessagesFromOthersGroup';
 import MessaByUser from '../MessaByUser/MessaByUser';
-import { useLocation } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import { db } from "../../firebase";
 
-const RenderedMessages = () => {
+const RenderedGroupMessages = (props) => {
     const [messages, setMessages] = useState([]);
-    const location = useLocation();
-    const { userToUID } = location.state;
     const {currentUser} = useContext(AuthContext);
-    var chatUser = currentUser.uid + "-" + userToUID;
-    const [userTo, setUserTo] = useState([]);
-
-    useEffect(() =>{
-        const newUser = onSnapshot(doc(db, 'users', userToUID), (doc) =>{
-          setUserTo(doc.data());
-          console.log(userTo)
-        });
-        return newUser
-      }, [userToUID]);
 
       useEffect (() => {
-        const unSub = onSnapshot(doc(db, "chats", chatUser), (doc) => {
+        const unSub = onSnapshot(doc(db, "groupMessages", props.groupId), (doc) => {
             doc.exists() && setMessages(doc.data().messages)
         })
 
         return () => {
             unSub()
         }
-    }, [chatUser])
+    }, [props.groupId])
+
 
     return (
         <div className='Container_RenderedMessages'>
             <div className='box_Messages'>
+                
             {
+                messages != null ?
                 messages.map(message => 
                     message.senderId == currentUser.uid ?
                     <MessaByUser 
-                    sendedTime="23:50"
+                    sendedTime="21:10"
                     text={message.text}
                     />
                     : 
                     <MessagesFromOthers 
-                    userName={userTo.UserName}
-                    sendedTime="23:52"
+                    userName={message.senderName}
+                    sendedTime="22:50"
                     text={message.text}
-                    userImage="perro"
                     />
                 )
+                :
+                null
             }
-                
+
             </div>
             
         </div>
     );
 }
-export default RenderedMessages
+export default RenderedGroupMessages
