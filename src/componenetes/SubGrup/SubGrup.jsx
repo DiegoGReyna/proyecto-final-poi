@@ -1,21 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './SubGrup.css'
-function SubGrup() {
+
+const SubGrup = (props) => {
+
   return (
     <div className='Container_SubGrup'>
-         <div className='Container_DeleteGrup'>
-                <button className='Button_Delete'>X</button>
-        </div>
-        <Link className='Container_LinkSubGrup' to={'SubGrupo'}>
+        <Link className='Container_LinkSubGrup' to={'SubGrupo'} state={{ groupId: props.groupId }}>
         <div className='Container_ImgSubGrup'>
             <img src={require('../../img/perro.jpg')} alt="" />
         </div>
         <div className='Container_NameSubGrup'>
-                <p>Nombre de sub grupo</p>
+                <p>{props.groupName}</p>
+                <p hidden>{props.groupId}</p>
         </div>
         </Link>
-       
     </div>
   )
 }

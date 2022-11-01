@@ -1,18 +1,35 @@
-import React from 'react'
-import './SubGrupPage.css'
+import { doc, onSnapshot, collection } from "firebase/firestore";
+import React, { useEffect, useState, useContext} from "react";
 import {Route, Routes } from 'react-router-dom';
 import NavBarSubgrup from '../../componenetes/NavBarSubgrup/NavBarSubgrup'
-
 import SubGrupChatPage from '../SubGrupChatPage/SubGrupChatPage';
-function SubGrupPage() {
+import { useLocation } from 'react-router-dom';
+import { db } from "../../firebase";
+import './SubGrupPage.css';
+import GroupMembers from "../../componenetes/GroupMembers/GroupMembers";
+
+
+const SubGrupPage = () => {
+  const location = useLocation();
+  const { groupId } = location.state;
+  const [ groupInfo, setgroupInfo] = useState([]);
+
+  useEffect (() => {
+    const unSub = onSnapshot(doc(db, "groupMembers", groupId), (doc) => {
+      setgroupInfo(doc.data())
+    })
+  }, [groupId])
+
   return (
     <div className='Container_SubGrupPage'>
         <NavBarSubgrup 
-            nombreSubGrupo="Nombre del sub Grupo"/>
+            nombreSubGrupo={groupInfo.groupName}
+            groupId={groupInfo.uid}/>
       
-            <Routes>
-                    <Route path="SubGrupoChat" element={<SubGrupChatPage />} />        
-            </Routes>
+          <Routes>
+                <Route path="SubGrupoChat" element={<SubGrupChatPage />} />
+                <Route path="GroupMembers" element={<GroupMembers />} />
+          </Routes>
     </div>
   )
 }
