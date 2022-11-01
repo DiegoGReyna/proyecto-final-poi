@@ -1,6 +1,17 @@
-import React,{useState} from 'react'
+import { doc, onSnapshot, collection, query, where } from "firebase/firestore";
+import React, { useEffect, useState, useContext} from "react";
+import {db} from "../../firebase"
 import './ChatCallBarr.css'
-function ChatCallBarr() {
+
+const ChatCallBarr = (props) => {
+  const [userTo, setUserTo] = useState([]);
+
+  useEffect(() =>{
+    const newUser = onSnapshot(doc(db, 'users', props.userToUID), (doc) =>{
+      setUserTo(doc.data());
+    });
+    return newUser
+  }, [props.userToUID]);
 
   const [modalCall ,setModalCall]=useState(false);
     const toggleModalCall=()=>{
@@ -25,9 +36,9 @@ function ChatCallBarr() {
                 <div  className='Container_UserCallOption' >
                   <div className='Container_Call'>
                     <div className='Image_User' >
-                       <img src={require('../../img/perro.jpg')} alt="" />
+                       <img src={userTo.photoURL} alt="" />
                     </div>
-                    <p>Nombre de usuario</p>
+                    <p>{userTo.UserName}</p>
                   </div>
                   <div className='Container_CallOption'>
                   <button
@@ -51,9 +62,9 @@ function ChatCallBarr() {
                     <div  className='Container_UserCallOption' >
                     <div className='Container_Call'>
                       <div className='Image_User' >
-                        <img src={require('../../img/perro.jpg')} alt="" />
+                        <img src={userTo.photoURL} alt="" />
                       </div>
-                      <p>Nombre de usuario</p>
+                      <p>{userTo.UserName}</p>
                     </div>
                     <div className='Container_CallOption'>
                       <button
@@ -71,10 +82,10 @@ function ChatCallBarr() {
 
         <div className='UserNameChat_BoxImage'>
             <div className='ImgChatUser'>
-                    <img  src={require('../../img/perro.jpg')} alt="UserImage"  />
+                  <img  src={userTo.photoURL} alt="UserImage"  />
             </div>
             <div className='UserNameChat'>
-                <p>Nombre de usuario</p>
+                <p>{userTo.UserName}</p>
             </div>
         </div>
         <div className='Box_Buttons_ChatCallBarr'>

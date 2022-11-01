@@ -1,29 +1,58 @@
-
-
 import React,{useState}from 'react';
-
 import '../Hojas-de-estilo/CreateAccount.css';
 import Form from 'react-bootstrap/Form';
 import { Link,useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db, storage } from "../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 
-function CreateAccount() {
-
-
+const CreateAccount = () => {
     const [UserEmail,setUserEmail]=useState("");
     const [UserPassword,setUserPassword]=useState("");
+    const [UserName,setUserName]=useState("");
+    const [UserCarrera,setUserCarrera]=useState("");
+    const [imgPreview,setImgPreview]=useState(null);
+    const [error,setError]=useState(false);
 
     const navigate=useNavigate();
-    const handleSubmit=(e)=>{
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate('/UserPage')
-       
-        console.log(`${UserEmail},${UserPassword}`);
+        try{
+            const res = await createUserWithEmailAndPassword(auth, UserEmail, UserPassword);
+
+            const storageRef = ref(storage, res.user.uid);
+
+            const uid = res.user.uid;
+
+            console.log(uid);
+
+            await uploadBytesResumable(storageRef, imgPreview).then(() => {
+                getDownloadURL(storageRef).then(async (downloadURL) => {
+                    await updateProfile(res.user, {
+                        uid,
+                        photoURL: downloadURL,
+                    });
+                    await setDoc(doc(db, "users", res.user.uid),{
+                        uid: res.user.uid,
+                        UserName,
+                        UserEmail,
+                        UserCarrera : UserCarrera,
+                        photoURL : downloadURL
+                    });
+                    await setDoc(doc(db, "userChats", res.user.uid), {});
+                    navigate('/UserPage');
+
+                });
+            }
+            );
+        }catch(err){
+            console.log(err);
+        }
     }
 
-
-    const[imgPreview,setImgPreview]=useState(null);
-    const[error,setError]=useState(false);
     const handleImageChange=(e)=>{
         const selected=e.target.files[0];
         const allowed_types=["image/png","image/jpeg","image/jpg"];
@@ -36,16 +65,21 @@ function CreateAccount() {
             reader.readAsDataURL(selected);
         }else{
             setError(true)
-            console.log("tipo de archivo no asceptado")
+            console.log("tipo de archivo no aceptado")
         }
     }
+
+    const handleChange = event => {
+      setUserCarrera(event.target.value);
+    };
+
     return (
         <div>
             <div className='ContainerCreatAccount'>
 
                 <form onSubmit={handleSubmit} >
                     <div className='BoxTitle'>
-                        <h2 className='TitleText'>Crear cueanta</h2>
+                        <h2 className='TitleText'>Crear cuenta</h2>
                     </div>
                     <div className='DataCreateAccountBox'>
                         <div className="ContainerInfoCreateAccount">
@@ -56,27 +90,25 @@ function CreateAccount() {
                             type="text" 
                             name="" 
                             id="InpCreatAccUserName" 
-                            onChange={(e)=>setUserEmail(e.target.value)}
-                            value={UserEmail}
+                            onChange={(e)=>setUserName(e.target.value)}
+                            value={UserName}
                             />
-                            <label htmlFor="InpCreatAccMail">Correo electronico</label>
-                            <input className='InpStyle' placeholder='Correo electronico' type="email" name="" id="InpCreatAccMail" />
+                            <label htmlFor="InpCreatAccMail">Correo electrónico</label>
+                            <input className='InpStyle' placeholder='Correo electrónico' type="email" name="" id="InpCreatAccMail" 
+                            onChange={(e)=>setUserEmail(e.target.value)}value={UserEmail}/>
                             <label htmlFor="InpCreatAccPsw">Contraseña</label>
-                            <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccPsw" />
-                            <label htmlFor="InpCreatAccConfPsw">Confirmar contraseña</label>
-                            <input 
-                                className='InpStyle' 
-                                placeholder='Contraseña' 
-                                type="password" 
-                                name="" 
-                                id="InpCreatAccConfPsw"
-                                onChange={(e)=>setUserPassword(e.target.value)}
-                                value={UserPassword}/>
+                            <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccPsw" 
+                            onChange={(e)=>setUserPassword(e.target.value)}  value={UserPassword}/>
                             <label htmlFor="Id_SelectCarrera">Carrera</label>
-                            <Form.Select className='Custom_Select'  id='Id_SelectCarrera' size='lg'>
-                            <option value="0">Seleccione una carrera</option>
-                                <option value="1">LMAD</option>
-                                <option value="2">LCC</option>
+                            <Form.Select className='Custom_Select' id='Id_SelectCarrera' size='lg' value={UserCarrera}  onChange={handleChange}>
+                                <option value="0">Seleccione una carrera</option>
+                                <option value="LMAD">LMAD</option>
+                                <option value="LCC">LCC</option>
+                                <option value="LSTI">LSTI</option>
+                                <option value="LM">LM</option>
+                                <option value="LA">LA</option>
+                                <option value="LF">LF</option>
+
                             </Form.Select>
                         </div>
                         <div className="ContainerImgCreateAccount">
