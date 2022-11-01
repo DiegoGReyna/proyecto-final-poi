@@ -28,12 +28,12 @@ import { AuthContext } from "../../context/AuthContext";
     return (
         <div className='ContainerNavBarMain'>
 
-            <NavLink className='MainNavLink' to='Perfil'>Perfil</NavLink>
+            <NavLink className='MainNavLink' to=''>Perfil</NavLink>
             <NavLink className='MainNavLink' to={user.UserCarrera}>{user.UserCarrera}</NavLink>
             <NavLink className='MainNavLink' to='SubGrupos'>SubGrupos</NavLink>
             <NavLink className='MainNavLink' to='Chats'>Chats</NavLink>
             <NavLink className='MainNavLink' to=''>Logros</NavLink>
-            <NavLink className='MainNavLink' to='Tareas'>Tareas</NavLink>
+            <NavLink className='MainNavLink' to=''>Tareas</NavLink>
             <button onClick={()=> {signOut(auth); navigate('/')}}>Salir</button>
         </div>
     )
