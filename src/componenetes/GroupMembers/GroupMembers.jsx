@@ -87,7 +87,7 @@ const GroupMembers = () => {
                     <div className='Container_Miembros'>
                         {
                             members.map(member => 
-                            <label>{member.MemberName}</label>
+                            <label className='MiembroNombre'>{member.MemberName}</label>
                             
                             )
                         }
