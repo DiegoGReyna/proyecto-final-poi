@@ -18,7 +18,7 @@ function LoginForm() {
             {/* <div className='BoxImgPage'><img src="" alt="" /></div> */}
             <form onSubmit={handleSubmit}>
                 <div className='BoxTitle'>
-                    <h2 className='TitleText'>Inicar secion</h2>
+                    <h2 className='TitleText'>Inicar sesión</h2>
                 </div>
                 <div className='DataLoginBox'>
                     <label htmlFor="InpLogInMail">Correo electronico</label>
@@ -33,7 +33,7 @@ function LoginForm() {
                     <label htmlFor="InpLogInPsw">Contraseña</label>
                     <input className='InpStyle' 
                         placeholder='Contraseña' 
-                        type="password" 
+                        type="password"
                         name="" 
                         id="InpLogInPsw" 
                         onChange={(e)=>setUserPassword(e.target.value)}
