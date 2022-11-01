@@ -84,7 +84,7 @@ const GroupMembers = () => {
                     <div className='Box_ButtonAgregarSubGrupo'>
                         <button  onClick={toggleModal} className='Button_AgregarSubGrupo'>Agregar Miembro</button>
                     </div>
-                    <div className='Container_Subgrupos'>
+                    <div className='Container_Miembros'>
                         {
                             members.map(member => 
                             <label>{member.MemberName}</label>
