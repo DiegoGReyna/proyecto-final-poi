@@ -68,9 +68,6 @@ const NavBarChats = () => {
           : null
           )
       }
-      
-
-
       </div>
     </div>
   )

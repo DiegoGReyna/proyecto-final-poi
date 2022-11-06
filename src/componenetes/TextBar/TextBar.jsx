@@ -20,10 +20,13 @@ const TextBar = () => {
   const toUpdateSender = doc(db, "chats", chatUser);
   const toUpdateReciver = doc(db, "chats", chatUserTo);
 
-
   const sendMessage = async () => {
     const coll = collection(db, "chats");
     const docSnap = await getDoc(doc(coll, chatUser));
+
+    let texto = document.getElementById("textId").value;
+    if(texto == "") return;
+    
     if(docSnap._document != null){
       await updateDoc(toUpdateSender, {
         messages: arrayUnion({
@@ -60,12 +63,15 @@ const TextBar = () => {
         })
       });
     }
+
+    document.getElementById("textId").value = "";
+
   }
 
   return (
     <div className='Container_TextBar'>
         <div className='Box_TextBar'>
-            <div className='Form_TextBar'>
+            <div className='Form_TextBar' onLoad={document.getElementById("textId").value = ""}>
               
                 <input placeholder='Escribe un mensaje' className='Input_Text' type="text" onChange={e=>setText(e.target.value)} value={text} id="textId"/>
             
