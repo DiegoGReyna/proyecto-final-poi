@@ -76,7 +76,7 @@
 button:hover{
     background-color: var(--Color5);
 }
-label:hover{
+.Container_TextBar label:hover{
     background-color: var(--Color5);
 }
 .Input_Text{
@@ -93,3 +93,6 @@ label:hover{
     text-align: center;
 }
 
+@media (max-width:768px ) {
+    
+}

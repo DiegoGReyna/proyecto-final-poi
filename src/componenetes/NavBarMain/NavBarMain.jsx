@@ -29,7 +29,7 @@ import { AuthContext } from "../../context/AuthContext";
         <div className='ContainerNavBarMain'>
 
             <NavLink className='MainNavLink' to='Perfil'>Perfil</NavLink>
-            <NavLink className='MainNavLink' to={user.UserCarrera}>{user.UserCarrera}</NavLink>
+            <NavLink className='MainNavLink' to={user.UserCarrera+"/Posts"}>{user.UserCarrera}</NavLink>
             <NavLink className='MainNavLink' to='SubGrupos'>SubGrupos</NavLink>
             <NavLink className='MainNavLink' to='Chats'>Chats</NavLink>
             <NavLink className='MainNavLink' to='Logros'>Logros</NavLink>

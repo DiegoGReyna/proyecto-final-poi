@@ -52,7 +52,7 @@
 }
 
 .Button_Call:hover{
-    background-color: var(--Color6);
+    /* background-color: var(--Color6); */
 }
 
 .Button_VideoChat {

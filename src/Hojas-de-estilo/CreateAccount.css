@@ -207,7 +207,7 @@ background: none;
 
 }
 .ContainerImgCreateAccount .labelFileUploaed:hover{
-    background-color: var(--Color2_5);
+    /* background-color: var(--Color2_5); */
     color: var(--Color1);
     
 }
