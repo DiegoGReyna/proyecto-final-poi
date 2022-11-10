@@ -8,14 +8,19 @@ export const Perfil = (props) => {
       <h2 className='PerfilText'>Perfil</h2>
       </div>
       <div className='ContainerPerfil'>
-        <form>
+        <form className='FormPerfil'>
+          <div className='ContainerImgPerf'>
+            <img src={props.ImgPerfil} alt="" />
+          </div>
           <div className='DataPerfilBox'>
           <label htmlFor="InpPerfilInMail">Correo electronico</label>
-          <input className='InpStyle' type="email" placeholder={props.email} name="" id="" />
+          <input  className='InpStyle' type="email" defaultValue={props.email} name="" id="" />
 
           <label htmlFor="InpLogInPsw">Contraseña</label>
-          <input className='InpStyle' type="text" placeholder={props.password} name="" id="" />
+          <input    className='InpStyle' type="password" defaultValue={props.psw} name="" id="" />
+
           <button className='InpSubmit' type='Submit'>Editar</button>
+          
           </div>
         </form>
       </div>

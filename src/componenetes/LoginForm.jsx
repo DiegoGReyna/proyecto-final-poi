@@ -47,8 +47,8 @@ const  LoginForm = () => {
                         value={UserPassword}
                     />
                     <div className='TwoButtons'>
-                        <Link className='InpRegistrarse' to="/CrearCuenta">Registrase</Link>
                         <input className='InpSubmit' type="submit" value="Ingresar" />
+                        <Link className='InpRegistrarse' to="/CrearCuenta">Registrase</Link>
                     </div>
                 </div>
             </form >

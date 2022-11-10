@@ -55,26 +55,29 @@
     align-items: center;
 }
 
-.Container_Miembros{
+.Container_Miembros {
     height: auto;
     width: 100%;
     display: flex;
     background-color: var(--Color5);
-    flex-direction: row;
     flex-wrap: wrap;
     overflow: auto;
     align-items: center;
     padding: 10px;
     border-radius: 1rem;
+    flex-direction: column;
+    align-content: flex-start;
 }
 
 .MiembroNombre{
     text-align: center;
-    color:black;
+    color: black;
     font-weight: bold;
-    font-size: 2vw;  
+    font-size: 2vw;
     padding: 5px;
-    margin-right: 40%
+    /* margin-right: 40%; */
+    text-align: left;
+    width: 100%;
 }
 
 .Container_DashBoardSubGrups .TitleText{

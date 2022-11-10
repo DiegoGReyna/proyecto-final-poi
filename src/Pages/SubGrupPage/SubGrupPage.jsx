@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { db } from "../../firebase";
 import './SubGrupPage.css';
 import GroupMembers from "../../componenetes/GroupMembers/GroupMembers";
+import { AssignmentsPage } from "../AssignmentsPage/AssignmentsPage";
 
 
 const SubGrupPage = () => {
@@ -29,6 +30,7 @@ const SubGrupPage = () => {
           <Routes>
                 <Route path="SubGrupoChat" element={<SubGrupChatPage />} />
                 <Route path="GroupMembers" element={<GroupMembers />} />
+                <Route path="Assignments" element={<AssignmentsPage />} />
           </Routes>
     </div>
   )
