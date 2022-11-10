@@ -6,13 +6,13 @@ import ChatsPage from '../ChatsPage/ChatsPage';
 import SubGrupPage from '../SubGrupPage/SubGrupPage';
 import RenderedMessages from '../../componenetes/RenderedMessages/RenderedMessages';
 import { Perfil } from '../../componenetes/Perfil/Perfil';
-import { Tareas } from '../../componenetes/Tareas/Tareas';
+import { Tareas } from '../Tareas/Tareas';
 import { useNavigate } from 'react-router-dom'
 import { onSnapshot, collection} from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
 import {db} from "../../firebase"
 import { MainGroupPage } from '../MainGroupPage/MainGroupPage';
-
+import { TareasPage } from '../TareasPage/TareasPage';
 import { AuthContext } from "../../context/AuthContext";
 
 const UserPage = () => {
@@ -42,7 +42,7 @@ const UserPage = () => {
                 <Route path="Chats/*" element={<ChatsPage />} /> 
                 <Route path="ChatEquipo/*" element={<RenderedMessages />} />
                 <Route path="Perfil" element={<Perfil email={user.UserEmail}psw="1234" ImgPerfil={"https://i.picsum.photos/id/237/3500/2095.jpg?hmac=y2n_cflHFKpQwLOL1SSCtVDqL8NmOnBzEW7LYKZ-z_o"}/>} />
-                <Route path="Tareas" element={<Tareas />} />
+                <Route path="Tareas/*" element={<TareasPage />} />
                 <Route path={user.UserCarrera+"/*"} element={<MainGroupPage />} />
             </Routes>
             

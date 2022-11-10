@@ -1,0 +1,63 @@
+.ContainerFile{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-rows: 1fr;
+    background-color: var(--Color2);
+    height: 8rem;
+    width: 25rem;
+    justify-items: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+.ContainerFile button{
+    height: 100%;
+    cursor: pointer;
+    width: 100%;
+    color: var(--Color6);
+    
+    background-color:transparent;
+    border: transparent;
+    transition: all 0.4s;
+     font-weight: 700;
+    align-items: center;
+}
+.ContainerFile p{
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    border: none;
+    color: var(--Color6);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.4s;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.ContainerFile span{
+    font-size: 1.5vw;
+}
+
+@media (max-width:768px ) {
+    .ContainerFile span{
+        font-size: 3vw;
+    }
+}
+
+
+@media (max-width:375px ) {
+    .ContainerFile{
+        height: 5rem;
+        width: 18rem;
+        border-radius: 0.5rem;
+    }
+    .ContainerFile p{
+      
+        font-size: 0.7rem;
+        font-weight: 400;
+       
+    }
+    .ContainerFile span{
+        font-size: 4.5vw;
+    }
+}
