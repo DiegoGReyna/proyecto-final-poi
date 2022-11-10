@@ -1,0 +1,216 @@
+.BackGroundModal{
+    background: rgba(62, 101, 133, 0.74);
+    backdrop-filter: blur(3px);
+    width:100%;
+    position: fixed;
+    height:100vh;
+    display:grid;
+    top:0%;
+    left: 0%;
+    justify-items: center;
+    align-items: center;
+}
+.CardMoadal{
+    background: var(--Color3);
+    padding: 14px 28px;
+    box-shadow: 0px 4px 47px 10px #000000;
+    border-radius: 30px;
+    min-width:50%;
+    min-height:80%;
+    /* grid-template-rows:${(props)=>props.MyGridTemplateRows}; */
+    display: grid;
+}
+.FormModal{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr repeat(5, 1fr);
+
+}
+
+
+.LebelModal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4vw;
+    color: whitesmoke;
+}
+
+.InpStyleModal {
+    width: 100%;
+    box-shadow: 0px 0px 20px 10px #000000;
+    border-radius: 10px;
+    height:4rem;
+    background-color: var(--Color6);
+    margin: 2rem 0 2rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.2vw;
+    text-align: center;
+    border: none;
+}
+.ContainerInputLabelModal{
+    display: grid;
+    grid-template-rows: 0.5fr 1fr;
+}
+
+.ModalCalcelButton{
+    width: 10%;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--Rojo);
+}
+
+.ButtonsModal{
+    height: 50%;
+    width: 100%;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: var(--Color5);
+    cursor: pointer;
+    color: var(--Color6);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1vw;
+    color: var(--Color6);
+    font-weight: bold;
+    transition: all 0.4s;
+   
+}
+.Container2Buttons{
+    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.ButtonsModal[name="cancel"]:hover{
+    background-color: var(--Rojo);
+}
+.ButtonsModal[name="submit"]:hover{
+    background-color:     var(--VerClaro);
+}
+.ContainerButonX{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
+
+
+@media (max-width:768px ) {
+
+    .ContainerInputLabelModal {
+        grid-template-rows: 30% 70%;
+        align-items: center;
+    }
+    
+    .CardMoadal{
+        min-height:70%;
+        padding: 10px 20px;
+        min-width: 60%;
+        
+    }
+    .LebelModal {
+       
+        font-size: 2vw;
+      
+       
+    }
+    .InpStyleModal {
+        font-size: 1.7vw;
+        box-shadow: 0px 0px 10px 5px #000000;
+        margin:0;
+    }
+    .ButtonsModal{
+        height: 50%;
+        width: 100%;
+        font-size: 2vw;
+    }
+    
+   
+
+}
+@media (max-width:600px ) {
+    .LebelModal {
+        font-size: 2.5vw;
+    }
+
+}
+@media (max-width:520px ) {
+
+    .Container2Buttons {
+        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .ButtonsModal {
+        height: 90%;
+        width: 100%;
+        font-size: 2.5vw;
+    }
+
+    .CardMoadal {
+        min-height: 65%;
+
+    }
+    .InpStyleModal {
+        height: 3rem;
+        border-radius: 0.5rem;
+    }
+
+    .ButtonsModal{
+       
+        border-radius: 0.5rem;
+       
+    }
+
+}
+@media (max-width:375px ) {
+    
+    .LebelModal {
+       
+        font-size: 3vw;
+      
+       
+    }
+    .InpStyleModal {
+        font-size: 2.3vw;
+        box-shadow: 0px 0px 5px 2.5px #000000;
+      
+    }
+    .ButtonsModal{
+    
+        font-size: 3vw;
+    }
+    .CardMoadal {
+        min-width: 70%;
+
+    }
+    .ModalCalcelButton{
+        width: 20%;
+      
+    }
+
+}
+@media (max-width:280px ) {
+    
+    .LebelModal {
+       
+        font-size: 3.5vw;
+      
+       
+    }
+    .InpStyleModal {
+        font-size: 2.5vw;
+        
+      
+    }
+    .ButtonsModal{
+    
+        font-size: 3.5vw;
+    }
+   
+    
+
+}
