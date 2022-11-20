@@ -9,7 +9,7 @@ import './SubGrupPage.css';
 import GroupMembers from "../../componenetes/GroupMembers/GroupMembers";
 import { AssignmentsPage } from "../AssignmentsPage/AssignmentsPage";
 import { TareasPage } from "../TareasPage/TareasPage";
-
+import { SubGroupPostsPage } from "../SubGroupPostsPage/SubGroupPostsPage";
 const SubGrupPage = () => {
   const location = useLocation();
   const { groupId } = location.state;
@@ -31,6 +31,7 @@ const SubGrupPage = () => {
                 <Route path="SubGrupoChat/*" element={<SubGrupChatPage />} />
                 <Route path="GroupMembers/*" element={<GroupMembers />} />
                 <Route path="Assignments/*" element={<TareasPage />} />
+                <Route path="Posts/*" element={<SubGroupPostsPage />} />
           </Routes>
     </div>
   )
