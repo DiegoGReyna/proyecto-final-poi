@@ -8,7 +8,7 @@ import { db } from "../../firebase";
 import './SubGrupPage.css';
 import GroupMembers from "../../componenetes/GroupMembers/GroupMembers";
 import { AssignmentsPage } from "../AssignmentsPage/AssignmentsPage";
-
+import { TareasPage } from "../TareasPage/TareasPage";
 
 const SubGrupPage = () => {
   const location = useLocation();
@@ -28,9 +28,9 @@ const SubGrupPage = () => {
             groupId={groupInfo.uid}/>
       
           <Routes>
-                <Route path="SubGrupoChat" element={<SubGrupChatPage />} />
-                <Route path="GroupMembers" element={<GroupMembers />} />
-                <Route path="Assignments" element={<AssignmentsPage />} />
+                <Route path="SubGrupoChat/*" element={<SubGrupChatPage />} />
+                <Route path="GroupMembers/*" element={<GroupMembers />} />
+                <Route path="Assignments/*" element={<TareasPage />} />
           </Routes>
     </div>
   )

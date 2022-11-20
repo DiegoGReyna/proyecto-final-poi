@@ -1,8 +1,10 @@
-import React from 'react'
+
 import { Link} from 'react-router-dom';
 import './DoAssignment.css'
 import { File } from '../File/File';
-export const DoAssignment = (props) => {
+import React from 'react'
+
+export const CheckAssignment = (props) => {
   return (
     <div className='ContainerDoAssignment' >
         <form action="" className='FormDoAssignment'>
@@ -37,3 +39,4 @@ export const DoAssignment = (props) => {
     </div>
   )
 }
+

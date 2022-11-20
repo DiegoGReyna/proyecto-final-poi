@@ -1,6 +1,6 @@
 import React from 'react'
 import './File.css'
-export const File = () => {
+export const File = (props) => {
   return (
     <div className='ContainerFile'>
       <button>
@@ -8,7 +8,7 @@ export const File = () => {
           description
         </span>
       </button>
-      <p>Nombre Del archivo</p>
+      <p>{props.FileName}</p>
       <button>
         <span className="material-symbols-outlined">
             delete
