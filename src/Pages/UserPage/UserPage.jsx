@@ -41,7 +41,7 @@ const UserPage = () => {
                 <Route path="SubGrupos/SubGrupo/*"element={<SubGrupPage />}/>
                 <Route path="Chats/*" element={<ChatsPage />} /> 
                 <Route path="ChatEquipo/*" element={<RenderedMessages />} />
-                <Route path="Perfil" element={<Perfil email={user.UserEmail}psw="1234" ImgPerfil={"https://i.picsum.photos/id/237/3500/2095.jpg?hmac=y2n_cflHFKpQwLOL1SSCtVDqL8NmOnBzEW7LYKZ-z_o"}/>} />
+                <Route path="Perfil" element={<Perfil/>} />
                 <Route path="Tareas/*" element={<TareasPage />} />
                 <Route path={user.UserCarrera+"/*"} element={<MainGroupPage />} />
             </Routes>

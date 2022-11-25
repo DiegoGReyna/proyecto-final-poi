@@ -1,6 +1,7 @@
 import React from 'react'
 import './NavBarMainGroup.css'
 import { NavLink } from 'react-router-dom'
+
 export const NavBarMainGroup = (props) => {
   return (
     <div className='BoxNavBarTeam'>

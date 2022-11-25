@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, {  useState, useContext} from "react";
 import './TextBar.css'
 import { AuthContext } from "../../context/AuthContext";
-import { ChatContext } from "../../context/ChatContext";
-import { db } from "../../firebase";
+import { db, storage } from "../../firebase";
 import { useLocation } from 'react-router-dom';
 import { v4 as uuid } from "uuid";
-import { arrayUnion, doc, collection, Timestamp, updateDoc, getDoc, setDoc, firestore, query, where,getCountFromServer } from "firebase/firestore";
+import { arrayUnion, doc, collection, updateDoc, getDoc, setDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const TextBar = () => {
   const location = useLocation()
@@ -14,7 +14,6 @@ const TextBar = () => {
   const [ img, setImg ] = useState(null);
 
   const {currentUser} = useContext(AuthContext);
-  const {data} = useContext(ChatContext);
   const chatUser =  currentUser.uid + "-" + userToUID;
   var chatUserTo =  userToUID + "-" + currentUser.uid;
   const toUpdateSender = doc(db, "chats", chatUser);
@@ -22,45 +21,122 @@ const TextBar = () => {
 
 
   const sendMessage = async () => {
-    const coll = collection(db, "chats");
-    const docSnap = await getDoc(doc(coll, chatUser));
-    if(docSnap._document != null){
-      await updateDoc(toUpdateSender, {
-        messages: arrayUnion({
-            id: uuid(),
-            text,
-            senderId: currentUser.uid,
-            date: Timestamp.now(),
-        }),
-      });
-      await updateDoc(toUpdateReciver, {
-        messages: arrayUnion({
-            id: uuid(),
-            text,
-            senderId: currentUser.uid,
-            date: Timestamp.now(),
-        }),
-      });
-    }
-    else{
-      await setDoc(toUpdateSender, {
-        messages: arrayUnion({
-            id: uuid(),
-            text,
-            senderId: currentUser.uid,
-            date: Timestamp.now(),
-        })
-      });
-      await setDoc(toUpdateReciver, {
-        messages: arrayUnion({
-            id: uuid(),
-            text,
-            senderId: currentUser.uid,
-            date: Timestamp.now(),
-        })
-      });
+    if(text != ""){
+      var _date = new Date().toISOString().slice(0, 10);
+      const coll = collection(db, "chats");
+      const docSnap = await getDoc(doc(coll, chatUser));
+      if(docSnap._document != null){
+        await updateDoc(toUpdateSender, {
+          messages: arrayUnion({
+              id: uuid(),
+              messageType: 1,
+              content: text,
+              senderId: currentUser.uid,
+              date: _date,
+          }),
+        });
+        await updateDoc(toUpdateReciver, {
+          messages: arrayUnion({
+              id: uuid(),
+              messageType: 1,
+              content: text,
+              senderId: currentUser.uid,
+              date: _date,
+          }),
+        });
+      }
+      else{
+        await setDoc(toUpdateSender, {
+          messages: arrayUnion({
+              id: uuid(),
+              messageType: 1,
+              content: text,
+              senderId: currentUser.uid,
+              date: _date,
+          })
+        });
+        await setDoc(toUpdateReciver, {
+          messages: arrayUnion({
+              id: uuid(),
+              messageType: 1,
+              content: text,
+              senderId: currentUser.uid,
+              date: _date,
+          })
+        });
+      }
+      document.getElementById("textId").value = "";
     }
   }
+
+  const sendImage = async (e) => {
+    const selected=e.target.files[0];
+    console.log(selected);
+    const allowed_types=["image/png","image/jpeg","image/jpg"];
+    if(selected&&allowed_types.includes(selected.type)){
+       try{        
+        const storageRef = ref(storage, `/individualChatsImages/${uuid()}`);
+        const uploadTask = uploadBytesResumable(storageRef, selected);
+
+        uploadTask.on(
+            (error) => {
+                //setErr(true);
+            },
+            () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+              var _date = new Date().toISOString().slice(0, 10);
+              const coll = collection(db, "chats");
+              const docSnap = await getDoc(doc(coll, chatUser));
+              console.log(chatUser);
+              if(docSnap._document != null){
+                await updateDoc(toUpdateSender, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 2,
+                      content: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  }),
+                });
+                await updateDoc(toUpdateReciver, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 2,
+                      content: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  }),
+                });
+              }
+              else{
+                await setDoc(toUpdateSender, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 2,
+                      contenido: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  })
+                });
+                await setDoc(toUpdateReciver, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 2,
+                      contenido: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  })
+                });
+              }
+            });
+        }
+        );
+    }catch(err){
+        console.log(err);
+    }
+
+    }
+}
 
   return (
     <div className='Container_TextBar'>
@@ -71,11 +147,8 @@ const TextBar = () => {
             
                 <button className='Button_SendMassage' onClick={sendMessage}></button>    
 
-                <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
-                <input id="Id_Labe_UploadFile" className='Input_File' type="file" name=""/>
-
-                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage"></label>
-                <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" />
+                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
+                <input type="file" className='Input_File' onChange={sendImage} id="Id_Labe_UploadImage" />
                 <button className='Button_SendLocation'></button>
             </div>
         </div>

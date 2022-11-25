@@ -18,14 +18,14 @@ const RenderedMessages = () => {
     useEffect(() =>{
         const newUser = onSnapshot(doc(db, 'users', userToUID), (doc) =>{
           setUserTo(doc.data());
-          console.log(userTo)
         });
         return newUser
       }, [userToUID]);
 
       useEffect (() => {
         const unSub = onSnapshot(doc(db, "chats", chatUser), (doc) => {
-            doc.exists() && setMessages(doc.data().messages)
+            doc.exists() && setMessages(doc.data().messages);
+            console.log(messages);
         })
 
         return () => {
@@ -40,15 +40,17 @@ const RenderedMessages = () => {
                 messages.map(message => 
                     message.senderId == currentUser.uid ?
                     <MessaByUser 
-                    sendedTime="23:50"
-                    text={message.text}
+                    sendedTime={message.date}
+                    content={message.content}
+                    messageType={message.messageType}
                     />
                     : 
                     <MessagesFromOthers 
                     userName={userTo.UserName}
-                    sendedTime="23:52"
-                    text={message.text}
-                    userImage="perro"
+                    sendedTime={message.date}
+                    content={message.content}
+                    userImage={userTo.photoURL}
+                    messageType={message.messageType}
                     />
                 )
             }

@@ -92,6 +92,12 @@ const ChatCallBarr = (props) => {
             <button  onClick={toggleModalCall} className='Button_Call'> </button>
             <button onClick={setModalVideoCall} className='Button_VideoChat'> </button>
         </div>
+            {
+              userTo.isUserActive == true ?
+              <p>Activo</p>
+              :
+              <p>No Activo</p>
+            }
     </div>
   )
 }

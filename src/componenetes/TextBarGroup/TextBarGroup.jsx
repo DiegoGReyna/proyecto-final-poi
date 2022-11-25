@@ -21,15 +21,19 @@ const TextBarGroup = (props) => {
   }, [currentUser.uid]);
 
   const sendMessage = async () => {
+    if(text != ""){
+      var _date = new Date().toISOString().slice(0, 10);
       await updateDoc( doc(db, "groupMessages", props.groupId), {
         messages: arrayUnion({
             id: uuid(),
             text,
             senderId: currentUser.uid,
             senderName: user.UserName,
-            dateMessage: Timestamp.now(),
+            dateMessage: _date,
         }),
       });
+      document.getElementById("textId").value = "";
+    }
      
   }
 
@@ -42,8 +46,7 @@ const TextBarGroup = (props) => {
             
                 <button className='Button_SendMassage' onClick={sendMessage}></button>    
 
-                <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
-                <input id="Id_Labe_UploadFile" className='Input_File' type="file" name=""/>
+                
 
                 <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage"></label>
                 <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" />

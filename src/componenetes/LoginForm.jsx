@@ -19,6 +19,7 @@ const  LoginForm = () => {
             navigate('/UserPage');
         }catch(err){
             console.log(err);
+            window.alert("Usuario o contraseña no existen");
         }
     }
     return (

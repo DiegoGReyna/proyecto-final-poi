@@ -1,8 +1,8 @@
-import React,{useState}from 'react';
+import React,{useState} from 'react';
 import '../Hojas-de-estilo/CreateAccount.css';
 import Form from 'react-bootstrap/Form';
 import { Link,useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
@@ -14,6 +14,7 @@ const CreateAccount = () => {
     const [UserName,setUserName]=useState("");
     const [UserCarrera,setUserCarrera]=useState("");
     const [imgPreview,setImgPreview]=useState(null);
+    const [img,setImg]=useState(null);
     const [error,setError]=useState(false);
 
     const navigate=useNavigate();
@@ -21,35 +22,39 @@ const CreateAccount = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const res = await createUserWithEmailAndPassword(auth, UserEmail, UserPassword);
+            if(UserName != "" && UserEmail != "" && UserCarrera != "" && UserPassword != "" && img != null){
+                const res = await createUserWithEmailAndPassword(auth, UserEmail, UserPassword);
+                
+                const uid = res.user.uid;
+                const storageRef = ref(storage, `/profileImage/${uid}`);
+                const uploadTask = uploadBytesResumable(storageRef, img);
 
-            const storageRef = ref(storage, res.user.uid);
-
-            const uid = res.user.uid;
-
-            console.log(uid);
-
-            await uploadBytesResumable(storageRef, imgPreview).then(() => {
-                getDownloadURL(storageRef).then(async (downloadURL) => {
-                    await updateProfile(res.user, {
-                        uid,
-                        photoURL: downloadURL,
+                uploadTask.on(
+                    (error) => {
+                        //setErr(true);
+                    },
+                    () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                        await setDoc(doc(db, "users", res.user.uid),{
+                            uid: res.user.uid,
+                            isUserActive : true,
+                            UserName,
+                            UserEmail,
+                            UserCarrera : UserCarrera,
+                            photoURL : downloadURL
+                        });
+                        await setDoc(doc(db, "userChats", res.user.uid), {});
+                        navigate('/UserPage');
                     });
-                    await setDoc(doc(db, "users", res.user.uid),{
-                        uid: res.user.uid,
-                        UserName,
-                        UserEmail,
-                        UserCarrera : UserCarrera,
-                        photoURL : downloadURL
-                    });
-                    await setDoc(doc(db, "userChats", res.user.uid), {});
-                    navigate('/UserPage');
-
-                });
+                }
+                );
             }
-            );
+            else{
+                window.alert("Favor de llenar todos los campos");
+            }
         }catch(err){
             console.log(err);
+            window.alert("Ocurrio un error correo no valido o en uso");
         }
     }
 
@@ -59,8 +64,8 @@ const CreateAccount = () => {
         if(selected&&allowed_types.includes(selected.type)){
             let reader=new FileReader();
             reader.onloadend=()=>{
+                setImg(e.target.files[0]);
                 setImgPreview(reader.result);
-                console.log(`${imgPreview}`)
             }
             reader.readAsDataURL(selected);
         }else{
@@ -70,7 +75,7 @@ const CreateAccount = () => {
     }
 
     const handleChange = event => {
-      setUserCarrera(event.target.value);
+        setUserCarrera(event.target.value);
     };
 
     return (
