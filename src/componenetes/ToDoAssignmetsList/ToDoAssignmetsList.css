@@ -36,53 +36,6 @@
     flex-direction:column;
     
 }
-.ContainerLinksAnbuttonsAssignmets{
-    display: flex;
-    height: auto;
-    width: 100%;
-    gap: 1rem;
-}
-
-.ButtonListAssignment{
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1vw;
-    color: var(--Color6);
-    font-weight: bold;
-    display: flex;
-    transition: all 0.4s;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    padding: 0 2.5rem;
-    border-radius: 0.5rem;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-
-.LinkListAssignment {
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1vw;
-    color: var(--Color6);
-    font-weight: bold;
-    display: flex;
-    transition: all 0.4s;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    padding: 0 2.5rem;
-    border-radius: 0.5rem;
-   
-}
-
-.LinkListAssignment:hover {
-    background-color: var(--Color4);
-    border-radius: 0.5rem;
-}
-
-
 
 .TareaText {
     text-align: center;
@@ -97,13 +50,12 @@
     
     width: 100%;
     height: 66rem;
-    align-items: center;
+    align-items: start;
     display: grid;
     grid-template-columns: 100%;
     overflow: auto;
     padding: 1rem;
     gap: 1rem;
-
 
 }
 
@@ -147,38 +99,4 @@
     border: none;
     cursor: pointer;
     text-align: center;
-}
-
-
-
-
-@media (max-width:375px ) {
-    
-    .ButtonListAssignment{
-       
-        font-size: 2.2vw;
-        font-weight: bold;
-        height: 100%;
-        padding: 0 1rem;
-        border-radius: 0.5rem;
-       
-    }
-    
-    
-    .LinkListAssignment {
-     
-        font-size: 2.2vw;
-        font-weight: bold;
-        display: flex;
-        height: 100%;
-        padding: 0 1rem;
-        border-radius: 0.5rem;
-      
-       
-    }
-    
-    .LinkListAssignment:hover {
-        background-color: var(--Color4);
-        border-radius: 0.5rem;
-    }
 }

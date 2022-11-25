@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link,NavLink} from 'react-router-dom';
-import './DoAssignment.css'
+import './SeeCompletedAssignment.css'
 import { File } from '../File/File';
-export const DoAssignment = (props) => {
+export const SeeCompletedAssignment = (props) => {
   return (
     <div className='ContainerDoAssignment' >
         <form action="" className='FormDoAssignment'>
@@ -22,8 +22,8 @@ export const DoAssignment = (props) => {
                 <p id='IdDescription'>{props.AssignmentDescription}</p>
             </div>
             <div className='ContainerDataAssigment'>
-            <label htmlFor="IdPoints">Puntos posibles</label>
-                <p id='IdPoints'>{props.MaxPoints}</p>
+            <label htmlFor="IdPoints">Puntos</label>
+                <p id='IdPoints'>{props.Poits} de {props.MaxPoints}</p>
             </div>
             <div className='ContainerDataAssigmentInputFile'>
                 <label htmlFor="IdAdFile">Adjuntar</label>
