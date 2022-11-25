@@ -46,7 +46,7 @@ export const TareasPage = (props) => {
                 AssignmentName="Nombre de la tarea" 
                 DuetoDate="11/11/2022" 
                 AssignmentDescription="Descripcion de la tarea :D" 
-               
+                SendedDate="10/11/2022"
                 MaxPoints="100"
                 />} >
                 </Route>

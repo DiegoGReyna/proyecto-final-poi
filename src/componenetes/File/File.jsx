@@ -4,7 +4,7 @@ export const File = (props) => {
   return (
     <div className='ContainerFile'>
       <button>
-        <span class="material-symbols-outlined">
+        <span className="material-symbols-outlined">
           description
         </span>
       </button>
