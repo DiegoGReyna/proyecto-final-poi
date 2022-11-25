@@ -4,6 +4,7 @@ import RenderedMessages from '../RenderedMessages/RenderedMessages'
 import './PrivChat.css'
 
 const PrivChat = () => {
+
   return (
     <div className='Container_PrivChat'>
       <RenderedMessages />

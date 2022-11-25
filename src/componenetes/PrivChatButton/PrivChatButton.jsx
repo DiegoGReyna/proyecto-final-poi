@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useState, useContext} from "react";
 
 const PrivChatButton = (props) => {
-
+  
   return (
     <div className='Container_PrivChatButton' >
         <Link className='Box_PrivChat' to="PrivChat" state={{ userToUID: props.uid }} >

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './Post.css'
 export const Post = (props) => {
   return (
@@ -14,8 +15,7 @@ export const Post = (props) => {
                         <p>{props.UserName}</p>
                     </div>
                     <div className='PostDate'>
-                        {/* <p>0:27am   05/11/2022</p> */}
-                        <p>{props.Time+"   "+props.Date}</p>
+                        <p>{props.Date}</p>
                     </div>
                 </div>
                 <div className='PostMessage'>

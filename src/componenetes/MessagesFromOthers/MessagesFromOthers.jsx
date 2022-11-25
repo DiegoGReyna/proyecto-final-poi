@@ -8,7 +8,7 @@ function MessagesFromOthers(props){
     <div className='Container_MessageFromOthers'>
       <dir className="Box_MessagesFromOthers" >
         <div className="Box_MessagesFromOthers_UserImage">
-          <img src={require(`../../img/perro.jpg`)} alt="UserImage"  />
+          <img src={props.userImage} alt="UserImage"  />
 
         </div>
         <div className="Box_MessagesFromOthers_UserTextTime">
@@ -22,7 +22,12 @@ function MessagesFromOthers(props){
 
           </div>
           <div className="Box_MessagesFromOthers_Text">
-          <p>{props.text}</p>
+            {
+              props.messageType == 1 ?
+              <p>{props.content}</p>
+              :
+              <img src={props.content} alt="" width="60px" height="60px"/>
+            }
           </div>
         </div>
       </dir>
