@@ -40,14 +40,14 @@ const RenderedMessages = () => {
                     message.senderId == currentUser.uid ?
                     <MessaByUser 
                     sendedTime={message.date}
-                    content={message.content}
+                    content={message.messageContent}
                     messageType={message.messageType}
                     />
                     : 
                     <MessagesFromOthers 
                     userName={userTo.UserName}
                     sendedTime={message.date}
-                    content={message.content}
+                    content={message.messageContent}
                     userImage={userTo.photoURL}
                     messageType={message.messageType}
                     />
