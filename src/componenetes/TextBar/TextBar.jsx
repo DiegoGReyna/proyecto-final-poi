@@ -29,7 +29,7 @@ const TextBar = () => {
           messages: arrayUnion({
               id: uuid(),
               messageType: 1,
-              content: text,
+              messageContent: text,
               senderId: currentUser.uid,
               date: _date,
           }),
@@ -38,7 +38,7 @@ const TextBar = () => {
           messages: arrayUnion({
               id: uuid(),
               messageType: 1,
-              content: text,
+              messageContent: text,
               senderId: currentUser.uid,
               date: _date,
           }),
@@ -49,7 +49,7 @@ const TextBar = () => {
           messages: arrayUnion({
               id: uuid(),
               messageType: 1,
-              content: text,
+              messageContent: text,
               senderId: currentUser.uid,
               date: _date,
           })
@@ -58,7 +58,7 @@ const TextBar = () => {
           messages: arrayUnion({
               id: uuid(),
               messageType: 1,
-              content: text,
+              messageContent: text,
               senderId: currentUser.uid,
               date: _date,
           })
@@ -68,8 +68,8 @@ const TextBar = () => {
     }
   }
 
-  /*const sendImage = async (img) => {
-    const selected=img.target.files[0];
+  const sendImage = async (e) => {
+    const selected=e.target.files[0];
     const allowed_types=["image/png","image/jpeg","image/jpg"];
     if(selected&&allowed_types.includes(selected.type)){
        try{        
@@ -90,7 +90,7 @@ const TextBar = () => {
                   messages: arrayUnion({
                       id: uuid(),
                       messageType: 2,
-                      content: downloadURL,
+                      messageContent: downloadURL,
                       senderId: currentUser.uid,
                       date: _date,
                   }),
@@ -99,7 +99,7 @@ const TextBar = () => {
                   messages: arrayUnion({
                       id: uuid(),
                       messageType: 2,
-                      content: downloadURL,
+                      messageContent: downloadURL,
                       senderId: currentUser.uid,
                       date: _date,
                   }),
@@ -110,7 +110,7 @@ const TextBar = () => {
                   messages: arrayUnion({
                       id: uuid(),
                       messageType: 2,
-                      contenido: downloadURL,
+                      messageContent: downloadURL,
                       senderId: currentUser.uid,
                       date: _date,
                   })
@@ -119,7 +119,7 @@ const TextBar = () => {
                   messages: arrayUnion({
                       id: uuid(),
                       messageType: 2,
-                      contenido: downloadURL,
+                      messageContent: downloadURL,
                       senderId: currentUser.uid,
                       date: _date,
                   })
@@ -131,77 +131,85 @@ const TextBar = () => {
       }catch(err){
           console.log(err);
       }
-
       }
-  }*/
+      else{
+        window.alert("Archivo no valido");
+      }
+  }
 
-const sendFile = async (file) => {
-  const selected=file.target.files[0];
-  const allowed_types="application/pdf";
-  if(selected&&allowed_types == selected.type){
-     try{        
-      const storageRef = ref(storage, `/individualChatsFiles/${uuid()}`);
-      const uploadTask = uploadBytesResumable(storageRef, selected);
-
-      uploadTask.on(
-          (error) => {
-              console.log(error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            console.log("Here");
+const sendFile = async (e) => {
+    const selected=e.target.files[0];
+    const allowed_types="application/pdf";
+    if(selected&&allowed_types == selected.type){
+       try{        
+        const storageRef = ref(storage, `/individualChatsFiles/${uuid()}`);
+        const uploadTask = uploadBytesResumable(storageRef, selected);
+        console.log("Before");
+        uploadTask.on("state_changed",
+        (snapshot) => {
+          const progress =
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          console.log(progress);
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            console.log("Inside");
             var _date = new Date().toISOString().slice(0, 10);
-            const coll = collection(db, "chats");
-            const docSnap = await getDoc(doc(coll, chatUser));
-            console.log(downloadURL);
-            if(docSnap._document != null){
-              await updateDoc(toUpdateSender, {
-                messages: arrayUnion({
-                    id: uuid(),
-                    messageType: 3,
-                    content: downloadURL,
-                    senderId: currentUser.uid,
-                    date: _date,
-                }),
-              });
-              await updateDoc(toUpdateReciver, {
-                messages: arrayUnion({
-                    id: uuid(),
-                    messageType: 3,
-                    content: downloadURL,
-                    senderId: currentUser.uid,
-                    date: _date,
-                }),
-              });
-            }
-            else{
-              await setDoc(toUpdateSender, {
-                messages: arrayUnion({
-                    id: uuid(),
-                    messageType: 3,
-                    contenido: downloadURL,
-                    senderId: currentUser.uid,
-                    date: _date,
-                })
-              });
-              await setDoc(toUpdateReciver, {
-                messages: arrayUnion({
-                    id: uuid(),
-                    messageType: 3,
-                    contenido: downloadURL,
-                    senderId: currentUser.uid,
-                    date: _date,
-                })
-              });
-            }
+              const coll = collection(db, "chats");
+              const docSnap = await getDoc(doc(coll, chatUser));
+              if(docSnap._document != null){
+                await updateDoc(toUpdateSender, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 3,
+                      messageContent: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  }),
+                });
+                await updateDoc(toUpdateReciver, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 3,
+                      messageContent: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  }),
+                });
+              }
+              else{
+                await setDoc(toUpdateSender, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 3,
+                      messageContent: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  })
+                });
+                await setDoc(toUpdateReciver, {
+                  messages: arrayUnion({
+                      id: uuid(),
+                      messageType: 3,
+                      messageContent: downloadURL,
+                      senderId: currentUser.uid,
+                      date: _date,
+                  })
+                });
+              }
           });
-      }
+        }
       );
-    }catch(err){
-        console.log(err);
-    }
-
-    }
+      }catch(err){
+          console.log(err);
+      }
+      }
+      else{
+        window.alert("Archivo no valido");
+      }
   }
 
   return (
@@ -214,10 +222,10 @@ const sendFile = async (file) => {
                 <button className='Button_SendMassage' onClick={sendMessage}></button>    
 
                 <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
-                <input type="file" className='Input_File' onChange={file=>sendFile(file)} id="Id_Labe_UploadFile"/>
+                <input type="file" className='Input_File' onChange={sendFile} id="Id_Labe_UploadFile"/>
 
                 <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
-                <input type="file" className='Input_File'  id="Id_Labe_UploadImage" />
+                <input type="file" className='Input_File' onChange={sendImage} id="Id_Labe_UploadImage" />
 
                 <button className='Button_SendLocation'></button>
             </div>
