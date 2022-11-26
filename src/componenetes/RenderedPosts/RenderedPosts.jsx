@@ -21,7 +21,6 @@ export const RenderedPosts = () => {
   useEffect (() => {
     const unSub = onSnapshot(doc(db, "carreras", "LMAD"), (doc) => {
         doc.exists() && setPosts(doc.data().posts)
-        console.log(posts);
     })
 
     return () => {
@@ -37,7 +36,7 @@ export const RenderedPosts = () => {
           <Post
             Date={post.datePost} 
             UserName={post.posterName} 
-            PostMessage={post.postText} 
+            PostContent={post.postContent} 
             UserImage={post.posterImage}
             PostType={post.postType}
           />

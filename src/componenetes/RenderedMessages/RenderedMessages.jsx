@@ -25,13 +25,12 @@ const RenderedMessages = () => {
       useEffect (() => {
         const unSub = onSnapshot(doc(db, "chats", chatUser), (doc) => {
             doc.exists() && setMessages(doc.data().messages);
-            console.log(messages);
         })
 
         return () => {
             unSub()
         }
-    }, [chatUser])
+    }, [userToUID])
 
     return (
         <div className='Container_RenderedMessages'>

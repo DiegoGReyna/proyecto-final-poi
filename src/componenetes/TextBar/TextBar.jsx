@@ -11,7 +11,6 @@ const TextBar = () => {
   const location = useLocation()
   const { userToUID } = location.state;
   const [ text, setText ] = useState("");
-  const [ img, setImg ] = useState(null);
 
   const {currentUser} = useContext(AuthContext);
   const chatUser =  currentUser.uid + "-" + userToUID;
@@ -69,9 +68,8 @@ const TextBar = () => {
     }
   }
 
-  const sendImage = async (e) => {
-    const selected=e.target.files[0];
-    console.log(selected);
+  /*const sendImage = async (img) => {
+    const selected=img.target.files[0];
     const allowed_types=["image/png","image/jpeg","image/jpg"];
     if(selected&&allowed_types.includes(selected.type)){
        try{        
@@ -87,7 +85,6 @@ const TextBar = () => {
               var _date = new Date().toISOString().slice(0, 10);
               const coll = collection(db, "chats");
               const docSnap = await getDoc(doc(coll, chatUser));
-              console.log(chatUser);
               if(docSnap._document != null){
                 await updateDoc(toUpdateSender, {
                   messages: arrayUnion({
@@ -131,12 +128,81 @@ const TextBar = () => {
             });
         }
         );
+      }catch(err){
+          console.log(err);
+      }
+
+      }
+  }*/
+
+const sendFile = async (file) => {
+  const selected=file.target.files[0];
+  const allowed_types="application/pdf";
+  if(selected&&allowed_types == selected.type){
+     try{        
+      const storageRef = ref(storage, `/individualChatsFiles/${uuid()}`);
+      const uploadTask = uploadBytesResumable(storageRef, selected);
+
+      uploadTask.on(
+          (error) => {
+              console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            console.log("Here");
+            var _date = new Date().toISOString().slice(0, 10);
+            const coll = collection(db, "chats");
+            const docSnap = await getDoc(doc(coll, chatUser));
+            console.log(downloadURL);
+            if(docSnap._document != null){
+              await updateDoc(toUpdateSender, {
+                messages: arrayUnion({
+                    id: uuid(),
+                    messageType: 3,
+                    content: downloadURL,
+                    senderId: currentUser.uid,
+                    date: _date,
+                }),
+              });
+              await updateDoc(toUpdateReciver, {
+                messages: arrayUnion({
+                    id: uuid(),
+                    messageType: 3,
+                    content: downloadURL,
+                    senderId: currentUser.uid,
+                    date: _date,
+                }),
+              });
+            }
+            else{
+              await setDoc(toUpdateSender, {
+                messages: arrayUnion({
+                    id: uuid(),
+                    messageType: 3,
+                    contenido: downloadURL,
+                    senderId: currentUser.uid,
+                    date: _date,
+                })
+              });
+              await setDoc(toUpdateReciver, {
+                messages: arrayUnion({
+                    id: uuid(),
+                    messageType: 3,
+                    contenido: downloadURL,
+                    senderId: currentUser.uid,
+                    date: _date,
+                })
+              });
+            }
+          });
+      }
+      );
     }catch(err){
         console.log(err);
     }
 
     }
-}
+  }
 
   return (
     <div className='Container_TextBar'>
@@ -147,8 +213,12 @@ const TextBar = () => {
             
                 <button className='Button_SendMassage' onClick={sendMessage}></button>    
 
+                <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
+                <input type="file" className='Input_File' onChange={file=>sendFile(file)} id="Id_Labe_UploadFile"/>
+
                 <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
-                <input type="file" className='Input_File' onChange={sendImage} id="Id_Labe_UploadImage" />
+                <input type="file" className='Input_File'  id="Id_Labe_UploadImage" />
+
                 <button className='Button_SendLocation'></button>
             </div>
         </div>

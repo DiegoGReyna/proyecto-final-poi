@@ -2,7 +2,6 @@ import React from 'react'
 import './MessaByUser.css'
 
 function MessaByUser(props) {
-  console.log(props);
   return (
     <div className='Container_MessagesByUser'>
         <dir className="Box_MessagesByUser" >
@@ -15,7 +14,10 @@ function MessaByUser(props) {
             props.messageType == 1 ?
             <p>{props.content}</p>
             :
+            props.messageType == 2 ?
             <img src={props.content} alt="" width="60px" height="60px"/>
+            :
+            <p>{props.content}</p>
           }
         </div>
         </div>
