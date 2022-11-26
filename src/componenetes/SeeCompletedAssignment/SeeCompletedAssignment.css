@@ -199,16 +199,73 @@
     }
     .ContainerTitle2Buttons h1{
         
-        font-size: 3.5vw;
+        font-size: 4vw;
         
     }
     .ContainerDataAssigment label {
     
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
     .ContainerDataAssigment p {
     
-        font-size: 2.2vw;
+        font-size: 3vw;
+    }
+    .Container2Buttons {
+        gap: 0.2rem;
+        display: grid;
+        align-items: center;
+        grid-template-rows: 0.5fr 0.5fr;
+        grid-template-columns: 1fr;
+    }
+
+    .ContainerDataAssigment {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-rows: 30% 70%;
+    }
+
+    .Buttons {
+        border-radius: 0.5rem;
+        font-size: 3vw;
+        height: 100%;
+    }
+
+    .ButtonsLink {
+        border-radius: 0.5rem;
+        font-size: 3vw;
+        height: 100%;
+    }
+    .ContainerDataAssigmentInputFile {
+       
+        width: 30%;
+        
+    }
+
+    .ContainerDataAssigmentInputFile label {
+        font-size: 3vw;
+    }
+
+}
+
+
+@media (max-width:280px ) {
+    .FormDoAssignment {
+      
+        grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
+    }
+    .ContainerTitle2Buttons h1{
+        
+        font-size: 4.5vw;
+        
+    }
+    .ContainerDataAssigment label {
+    
+        font-size: 4vw;
+    }
+    .ContainerDataAssigment p {
+    
+        font-size: 3.5vw;
     }
     .Container2Buttons {
         gap: 0.5rem;
@@ -227,13 +284,13 @@
 
     .Buttons {
         border-radius: 0.5rem;
-        font-size: 2.5vw;
+        font-size: 3.5vw;
         height: 100%;
     }
 
     .ButtonsLink {
         border-radius: 0.5rem;
-        font-size: 2.5vw;
+        font-size: 3.5vw;
         height: 100%;
     }
     .ContainerDataAssigmentInputFile {
@@ -243,6 +300,9 @@
     }
 
     .ContainerDataAssigmentInputFile label {
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
+
+   
+    
 }

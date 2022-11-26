@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link} from 'react-router-dom';
+import { Link,NavLink} from 'react-router-dom';
 import './DoAssignment.css'
 import { File } from '../File/File';
 export const DoAssignment = (props) => {
@@ -10,11 +10,11 @@ export const DoAssignment = (props) => {
                     <h1>{props.AssignmentName}</h1>
                     <div className='Container2Buttons' >
                         <button  className='Buttons' type='submit'>Entregar</button>
-                        <Link  className='ButtonsLink' to="/UserPage/Tareas">Atras</Link>
+                        <NavLink   state={{ groupId: props.groupId }}    className='ButtonsLink' to="/UserPage/SubGrupos/SubGrupo/Assignments/DashBoard">Atras</NavLink>
                     </div>
             </div>
             <div className='ContainerDataAssigment'>
-                <label htmlFor="idDate">Fecha de entega</label>
+                <label htmlFor="idDate">Fecha de entrega</label>
                 <p id='idDate'>{props.DuetoDate}</p>
             </div>
             <div className='ContainerDataAssigment' >
@@ -22,8 +22,8 @@ export const DoAssignment = (props) => {
                 <p id='IdDescription'>{props.AssignmentDescription}</p>
             </div>
             <div className='ContainerDataAssigment'>
-            <label htmlFor="IdPoints">Puntos</label>
-                <p id='IdPoints'>{props.Poits} de {props.MaxPoints}</p>
+            <label htmlFor="IdPoints">Puntos posibles</label>
+                <p id='IdPoints'>{props.MaxPoints}</p>
             </div>
             <div className='ContainerDataAssigmentInputFile'>
                 <label htmlFor="IdAdFile">Adjuntar</label>

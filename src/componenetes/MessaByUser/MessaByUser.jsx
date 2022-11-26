@@ -21,6 +21,7 @@ function MessaByUser(props) {
           }
         </div>
         </div>
+        </div>
     </dir>
   </div>
   )

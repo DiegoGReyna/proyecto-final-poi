@@ -30,7 +30,12 @@ const SubGrupPage = () => {
           <Routes>
                 <Route path="SubGrupoChat/*" element={<SubGrupChatPage />} />
                 <Route path="GroupMembers/*" element={<GroupMembers />} />
-                <Route path="Assignments/*" element={<TareasPage />} />
+                <Route path="Assignments/*" element={<TareasPage 
+                
+                nombreSubGrupo={groupInfo.groupName}
+                groupId={groupInfo.uid}
+                
+                />} />
                 <Route path="Posts/*" element={<SubGroupPostsPage />} />
           </Routes>
     </div>
