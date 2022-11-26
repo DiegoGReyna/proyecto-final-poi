@@ -15,7 +15,7 @@ function MessaByUser(props) {
             props.messageType == 1 ?
             <p>{props.content}</p>
             :
-            <img src={props.content} alt="" width="60px" height="60px"/>
+            <img src={props.content} alt="imagen" width="60px" height="60px"/>
           }
         </div>
         </div>

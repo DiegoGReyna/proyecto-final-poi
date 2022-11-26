@@ -71,7 +71,7 @@ header .nav-btn{
 .nav-btn button:hover{
     border-radius: 0.5rem;
     background-color: var(--Rojo);
-}
+} 
 
 
 header .nav-Open{
