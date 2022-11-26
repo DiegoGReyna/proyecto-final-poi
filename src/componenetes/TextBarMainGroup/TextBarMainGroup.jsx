@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext} from "react";
 import './TextBarMainGroup.css'
 import { AuthContext } from "../../context/AuthContext";
-import { ChatContext } from "../../context/ChatContext";
-import { db } from "../../firebase";
-import { useLocation } from 'react-router-dom';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { arrayUnion, doc, collection, Timestamp, updateDoc, getDoc, setDoc, firestore,onSnapshot } from "firebase/firestore";
 
@@ -13,6 +12,12 @@ export const TextBarMainGroup = () => {
   const [user, setUser] = useState([]);
   const [text, setText] = useState("");
 
+    useEffect(() =>{
+        const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
+          setUser(doc.data());
+        });
+        return newUser
+      }, [currentUser.uid]);
 
   useEffect(() =>{
     const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
@@ -27,17 +32,55 @@ export const TextBarMainGroup = () => {
       await updateDoc( doc(db, "carreras", user.UserCarrera), {
         posts: arrayUnion({
             id: uuid(),
-            postText: text,
-            posterId: currentUser.uid,
+            postContent: text,
+            posterId: user.uid,
             posterName: user.UserName,
             datePost: _date,
-            posterImage: currentUser.photoURL
+            posterImage: user.photoURL,
+            postType: 1
         }),
       });
       document.getElementById("textId").value = "";
     }
      
   }
+
+  const sendImage = async (e) => {
+    console.log("Uploading");
+    const selected=e.target.files[0];
+    const allowed_types=["image/png","image/jpeg","image/jpg"];
+    if(selected&&allowed_types.includes(selected.type)){
+       try{        
+        const storageRef = ref(storage, `/postsImages/${user.UserCarrera}/${uuid()}`);
+        var userToUpdate = doc(db, "carreras", user.UserCarrera);
+        const uploadTask = uploadBytesResumable(storageRef, selected);
+        uploadTask.on(
+            (error) => {
+                //setErr(true);
+            },
+            () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+              var _date = new Date().toISOString().slice(0, 10);
+                await updateDoc(userToUpdate, {
+                  posts: arrayUnion({
+                    id: uuid(),
+                    postContent: downloadURL,
+                    posterId: user.uid,
+                    posterName: user.UserName,
+                    datePost: _date,
+                    posterImage: user.photoURL,
+                    postType: 2
+                }),
+                });
+            });
+        }
+        );
+    }catch(err){
+        console.log(err);
+    }
+
+    }
+}
   
   return (
     <div className='Container_TextBar'>
@@ -46,12 +89,12 @@ export const TextBarMainGroup = () => {
               <div className="ContainerInputTextSendMessage">
               <input placeholder='Escribe un mensaje' className='Input_Text' type="text" onChange={e=>setText(e.target.value)} value={text} id="textId"/>
                 
-              <button className='Button_SendMassage' onClick={sendMessage}></button>  
+                <button className='Button_SendMassage' onClick={sendMessage}></button>  
 
                 </div>   
               <div className="ContainerSendFilesImgs">
-                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage"></label>
-                <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" />
+                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
+                <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" onChange={sendImage}/>
                 <button className='Button_SendLocation'></button>
               </div>
 

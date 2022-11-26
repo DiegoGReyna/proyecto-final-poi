@@ -19,7 +19,11 @@ export const Post = (props) => {
                     </div>
                 </div>
                 <div className='PostMessage'>
-                    <p>{props.PostMessage}</p>
+                    { props.PostType == 1 ?
+                    <p>{props.PostContent}</p>
+                    :
+                    <img src={props.PostContent} alt="" width="60px" height="60px"/>
+                    }
                 </div>
         </div>
 
