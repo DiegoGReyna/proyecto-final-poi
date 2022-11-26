@@ -28,7 +28,7 @@ function MessagesFromOthers(props){
               : props.messageType == 2 ?
               <img src={props.content} alt="" width="60px" height="60px"/>
               :
-              <p>{props.content}</p>
+              <a href={props.content} target="_blank">File</a>
             }
           </div>
         </div>
