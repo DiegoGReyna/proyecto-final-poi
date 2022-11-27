@@ -30,7 +30,7 @@ const  LoginForm = () => {
                 </div>
                 <div className='DataLoginBox'>
                     <label htmlFor="InpLogInMail">Correo electrónico</label>
-                    <input className='InpStyle' 
+                    <input className='InpStyleLogIn' 
                         placeholder='Correo electronico' 
                         type="email" 
                         name="" 
@@ -39,7 +39,7 @@ const  LoginForm = () => {
                         value={UserEmail}
                      />
                     <label htmlFor="InpLogInPsw">Contraseña</label>
-                    <input className='InpStyle' 
+                    <input className='InpStyleLogIn' 
                         placeholder='Contraseña' 
                         type="password"
                         name="" 

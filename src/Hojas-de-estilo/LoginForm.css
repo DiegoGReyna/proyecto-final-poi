@@ -53,9 +53,10 @@ html {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    overflow: auto;
 }
 
 .BoxTitle {
@@ -75,12 +76,12 @@ html {
 }
 
 .DataLoginBox {
-    /* height: 80%; */
+    height: 80%;
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .DataLoginBox label {
@@ -91,7 +92,7 @@ html {
 .DataLoginBox label:hover {
     background: none;
 }
-.InpStyle {
+.InpStyleLogIn {
     width: 100%;
     box-shadow: 0px 0px 20px 10px #000000;
     border-radius: 15px;
@@ -160,4 +161,123 @@ html {
 
 .InpRegistrarse:hover {
     box-shadow: inset 0px 0px 11px 10px rgba(0, 0, 0, 0.46);
+}
+@media (max-width:1024px ) {
+    .TitleText {
+        font-size: 4vw;
+    }
+
+    .ContainerLogin .DataLoginBox label {
+        
+        
+        font-size: 3vw;
+      
+    }
+
+    .ContainerLogin .InpStyleLogIn  {
+       
+        box-shadow: 0px 0px 5px 2.5px #000000 !important;
+        border-radius: 5px !important;
+        height: auto;
+        margin:0;
+        font-size: 2.5vw;
+       
+    }
+
+
+}
+@media (max-width:780px ) {
+    .ContainerLogin{
+        width: 80%;
+        height: 55rem;
+    }
+    .DataLoginBox{
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+}
+
+@media (max-width:520px ) {
+
+    .ContainerLogin .DataLoginBox label {
+        
+        
+        font-size: 4vw;
+      
+    }
+
+    .ContainerLogin .InpStyleLogIn  {
+       
+        font-size: 3.5vw;
+       
+    }
+
+}
+@media (max-width:360px ){
+    .ContainerLogin {
+        width: 80%;
+        height: 75% ;
+    }
+    .DataLoginBox {
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .ContainerLogin .DataLoginBox label {
+        
+        
+        font-size: 5vw;
+      
+    }
+
+    .ContainerLogin .InpStyleLogIn  {
+       
+        font-size: 4vw;
+       
+    }
+}
+@media (max-width:280px )  {
+    
+    .ContainerLogin .TitleText{
+        font-size: 6.5vw;
+
+    }
+    .ContainerLogin .InpSubmit{
+       
+       
+        font-size: 4.5vw!important;
+        height: auto !important;
+      
+    }
+
+    .ContainerLogin .InpRegistrarse {
+        font-size: 4.5vw!important;
+        height: auto !important;
+    }
+
+
+    .ContainerLogin .DataLoginBox label {
+        
+        
+        font-size: 5vw;
+      
+    }
+
+    .ContainerLogin .InpStyleLogIn  {
+       
+        font-size: 4vw;
+       
+    }
+
+    .ContainerLogin {
+        width: 80%;
+        height: 60% ;
+    }
+    
 }

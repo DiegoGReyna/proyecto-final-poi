@@ -78,7 +78,7 @@ const CreateAccount = () => {
     };
 
     return (
-        <div>
+        <div className='BoxCreateAcout'>
             <div className='ContainerCreatAccount'>
 
                 <form onSubmit={handleSubmit} >
@@ -89,7 +89,7 @@ const CreateAccount = () => {
                         <div className="ContainerInfoCreateAccount">
                             <label htmlFor="InpCreatAccUserName">Nombre de usuario</label>
                             <input 
-                            className='InpStyle' 
+                            className='InpStyleCreateAccout' 
                             placeholder='Nombre de usuario' 
                             type="text" 
                             name="" 
@@ -98,10 +98,10 @@ const CreateAccount = () => {
                             value={UserName}
                             />
                             <label htmlFor="InpCreatAccMail">Correo electrónico</label>
-                            <input className='InpStyle' placeholder='Correo electrónico' type="email" name="" id="InpCreatAccMail" 
+                            <input className='InpStyleCreateAccout' placeholder='Correo electrónico' type="email" name="" id="InpCreatAccMail" 
                             onChange={(e)=>setUserEmail(e.target.value)}value={UserEmail}/>
                             <label htmlFor="InpCreatAccPsw">Contraseña</label>
-                            <input className='InpStyle' placeholder='Contraseña' type="password" name="" id="InpCreatAccPsw" 
+                            <input className='InpStyleCreateAccout' placeholder='Contraseña' type="password" name="" id="InpCreatAccPsw" 
                             onChange={(e)=>setUserPassword(e.target.value)}  value={UserPassword}/>
                             <label htmlFor="Id_SelectCarrera">Carrera</label>
                             <Form.Select className='Custom_Select' id='Id_SelectCarrera' size='lg' value={UserCarrera}  onChange={handleChange}>
