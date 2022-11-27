@@ -87,17 +87,21 @@ const ChatCallBarr = (props) => {
             <div className='UserNameChat'>
                 <p>{userTo.UserName}</p>
             </div>
-        </div>
-        <div className='Box_Buttons_ChatCallBarr'>
-            <button  onClick={toggleModalCall} className='Button_Call'> </button>
-            <button onClick={setModalVideoCall} className='Button_VideoChat'> </button>
-        </div>
             {
+
               userTo.isUserActive == true ?
-              <p>Activo</p>
+              <p className="IsActiveText">Activo</p>
               :
               <p>No Activo</p>
             }
+
+        </div>
+            
+             <div className='Box_Buttons_ChatCallBarr'>
+            <button  onClick={toggleModalCall} className='Button_Call'> </button>
+            <button onClick={setModalVideoCall} className='Button_VideoChat'> </button>
+            </div>
+
     </div>
   )
 }

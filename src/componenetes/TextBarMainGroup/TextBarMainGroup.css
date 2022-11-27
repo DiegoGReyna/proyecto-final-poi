@@ -309,6 +309,12 @@ button:hover{
 
   @media (max-width:280px ) {
     
-    
+   
+        .Input_Text{
+            
+            font-size: 4.5vw !important;
+            
+        }
+ 
   }
 

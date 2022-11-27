@@ -206,3 +206,43 @@
     }
 
 }
+
+@media (max-width:280px ) {
+
+    .Box_MessagesFromOthers_UserTextTime {
+       
+       
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 2.5px;
+    }
+
+
+    
+    .Box_MessagesFromOthers_Text {
+        font-size: 4vw;
+        padding: 0.2rem;
+    }
+
+    .Box_MessagesFromOthers {
+        max-width: 85%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+    .Box_MessagesFromOthers_UserImage {
+       
+        width: 2.5rem;
+        height: 2.5rem;
+      
+    }
+    
+    .Box_MessagesFromOthers_User {
+        font-size: 2.6vw;
+    }
+
+    .Box_MessagesFromOthers_Time {
+        font-size: 2.6vw;
+    }
+
+}

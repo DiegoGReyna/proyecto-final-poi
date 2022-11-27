@@ -137,14 +137,45 @@
 
     .Box_MessagesByUser_Text{
        
-        font-size: 3vw;
+        font-size: 3.5vw;
        
         padding: 0.2rem;
        
     }
     .Box_MessagesByUser {
-        max-width: 60%;
+        max-width: 70%;
         min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+}
+
+@media (max-width:280px ) {
+    .Container_MessagesByUser{
+        margin-bottom: 0.2rem;
+        margin-top: 0.2rem;
+    }
+    .Box_MessagesByUser_TextTime{
+        
+        border-radius: 2.5px;
+        
+    }
+
+    .Box_MessagesByUser_Time{
+        font-size: 3vw;
+
+    }
+
+    .Box_MessagesByUser_Text{
+       
+        font-size: 4vw;
+       
+        padding: 0.1rem;
+       
+    }
+    .Box_MessagesByUser {
+        max-width: 75%;
         width: auto;
         height: auto;
     }

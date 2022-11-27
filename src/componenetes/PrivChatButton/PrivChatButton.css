@@ -130,3 +130,20 @@
     }
 
 }
+
+
+@media (max-width:280px ) {
+    
+    .Box_PrivChat {
+       font-size: 4vw;
+        width: 90%;
+        border-radius: 1rem;
+        border: 2px solid var(--Color1);
+        
+    }
+    .Box_ChatImage{
+    width: 20%;
+    height: 70%;
+    }
+
+}

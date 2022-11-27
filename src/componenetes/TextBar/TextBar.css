@@ -252,3 +252,15 @@ button:hover{
        
     }
 }
+
+
+
+
+
+@media (max-width:280px ) {
+    .Input_Text{
+        
+        font-size: 6vw !important;
+        
+    }
+}
