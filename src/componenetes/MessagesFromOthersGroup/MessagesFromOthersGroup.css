@@ -8,7 +8,7 @@
 .Box_MessagesFromOthers{
     
     width: 50%;
-    height: 15rem;
+    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,7 +30,8 @@
     align-items: center;
     justify-content: space-between;
     width: 95%;
-    height: 15%;
+    /* height: 15%; */
+    height: auto;
 }
 .Box_MessagesFromOthers_User{
     font-size: 1.1vw;
@@ -43,7 +44,7 @@
 .Box_MessagesFromOthers_UserTextTime{
     width: 75%;
     background-color: var(--Color5);
-    height: 100%;
+    height: auto;
     box-shadow: 0px 4px 15px 8px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     display: flex;
@@ -56,10 +57,152 @@
     height: 75%;
     font-family: 'Poppins', sans-serif;
     font-size: 1vw;
+    display: inline-block;
+    max-width: 100%;
+    padding: 1rem;
+    word-break: break-all;
 }
 .Box_MessagesFromOthers_UserImage img{
     width: 7vw;
     height: 7vw;
     /* margin-right: 1rem; */
     border-radius: 100%;
+}
+
+@media (max-width:1024px ) {
+
+    .Box_MessagesFromOthers_UserTextTime {
+       
+       
+        height: auto;
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+
+
+    
+    .Box_MessagesFromOthers_Text {
+        font-size: 2vw;
+        padding: 0.2rem;
+    }
+
+    .Box_MessagesFromOthers {
+        max-width: 70%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+    .Box_MessagesFromOthers_UserImage {
+       
+        width: 7rem;
+        height: 7rem;
+      
+    }
+    .Box_MessagesFromOthers_UserImage img {
+        width: 100%;
+        height: 100%;
+       
+    }
+    
+    .Box_MessagesFromOthers_User {
+        font-size: 1.5vw;
+        font-weight: bold;
+    }
+
+    .Box_MessagesFromOthers_Time {
+        font-size: 1.5vw;
+    }
+
+}
+@media (max-width:520px ) {
+    .Box_MessagesFromOthers_UserTextTime {
+       
+       
+        height: auto;
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+
+
+    
+    .Box_MessagesFromOthers_Text {
+        font-size: 3.5vw;
+        padding: 0.2rem;
+    }
+
+    .Box_MessagesFromOthers {
+        max-width: 70%;
+        min-width: 60%;
+        width: auto;
+        height: auto;
+    }
+
+    .Box_MessagesFromOthers_UserImage {
+       
+        width: 5rem;
+        height: 5rem;
+      
+    }
+    .Box_MessagesFromOthers_UserImage img {
+        width: 100%;
+        height: 100%;
+       
+    }
+    
+    .Box_MessagesFromOthers_User {
+        font-size: 2.5vw;
+        font-weight: bold;
+    }
+
+    .Box_MessagesFromOthers_Time {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width:360px ) {
+
+    .Box_MessagesFromOthers_UserTextTime {
+       
+       
+        height: auto;
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+
+
+    
+    .Box_MessagesFromOthers_Text {
+        font-size: 3vw;
+        padding: 0.2rem;
+    }
+
+    .Box_MessagesFromOthers {
+        max-width: 70%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+    .Box_MessagesFromOthers_UserImage {
+       
+        width: 3rem;
+        height: 3rem;
+      
+    }
+    .Box_MessagesFromOthers_UserImage img {
+        width: 100%;
+        height: 100%;
+       
+    }
+    
+    .Box_MessagesFromOthers_User {
+        font-size: 2.5vw;
+        font-weight: bold;
+    }
+
+    .Box_MessagesFromOthers_Time {
+        font-size: 2.5vw;
+    }
+
 }

@@ -3,13 +3,14 @@ import React, { useEffect, useState, useContext} from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ChatContext } from "../../context/ChatContext";
 import {db} from "../../firebase"
-import './NavBarChats.css'
+
 import PrivChatButton from '../PrivChatButton/PrivChatButton'
-
+import { useRef } from "react";
+import './NavBarChats.css'
 const NavBarChats = () => {
-  const [modal ,setModal]=useState(false);
+  const ChatNav =useRef();
+ 
   const [chats, setChats] = useState([]);
-
     const {currentUser} = useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
 
@@ -20,56 +21,58 @@ const NavBarChats = () => {
       return newChat
     }, [currentUser.uid]);
 
-  const toggleModal=()=>{
-    setModal(!modal)
-  }
-
+ 
+    const navRef =useRef();
+    const showNavBar =()=>{
+        navRef.current.classList.toggle("PleasWork");
+        
+    }
   return (
-    <div className='Container_NavBarChats'>
-      {modal && (
-        <div className='modal'>
-        <div className='overlay'></div>
-        <div className='modal_content'>
-          <h2 className='TitleText' >Agregar chat</h2>
-          <form className='Form_Modal' action="">
-            
-            <label htmlFor="Id_Email_AgregarChat">Correo electronico</label>
-            <input placeholder='Ingrese un correo electronico' className='InpStyle' type="email" name="" id="Id_Email_AgregarChat" />
-            <button  className='Button_Nav' 
-            onClick={toggleModal}
-            type="submit">Agregar a chat</button>
+    <header className='Container_NavBarChats'>
+      <nav  className="NavChatsPriv"  ref={navRef}>
+      <div  className='nav-button button-close' >
+            <button 
+              onClick={showNavBar}
+             
+             >
+             <span className="material-symbols-outlined">
+                        close
+                        </span>
+            </button>
+            </div>
 
-          </form>
-        </div>
-      </div>
-      )}
-      
+          <div className='Container_ChatsButtons'>
+
+          {/*Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+                  <div>{chat[1].UserName}</div>
+          ))*/}
+
+          {
+            chats.map(chat => 
+              chat.uid != currentUser.uid ?
+              <PrivChatButton onClick={showNavBar}
+              userName={chat.UserName}
+              imagen={chat.photoURL}
+              uid ={chat.uid}
+              />
+              : null
+              )
+          }
+         
+
+
+          </div>
+          
+      </nav>
       <div className='Container_Button'>
-        <button 
-          onClick={toggleModal}
-          className='Button_Nav'>
-          Agregar chat
-        </button>
-      </div>
-      <div className='Container_ChatsButtons'>
+            <button 
+               onClick={showNavBar}
+              className='nav-button'>
+              Agregar chat
+            </button>
+          </div>
 
-      {/*Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
-               <div>{chat[1].UserName}</div>
-      ))*/}
-
-      {
-        chats.map(chat => 
-          chat.uid != currentUser.uid ?
-          <PrivChatButton 
-          userName={chat.UserName}
-          imagen={chat.photoURL}
-          uid ={chat.uid}
-          />
-          : null
-          )
-      }
-      </div>
-    </div>
+          </header> 
   )
 }
 

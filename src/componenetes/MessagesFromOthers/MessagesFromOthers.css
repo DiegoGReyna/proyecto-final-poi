@@ -10,7 +10,7 @@
 .Box_MessagesFromOthers{
     
     width: 50%;
-    height: 15rem;
+    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
