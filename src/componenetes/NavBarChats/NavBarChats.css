@@ -217,11 +217,12 @@ header .nav-button{
     }
 
     header nav{
+        width: auto;
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 100%;
+        height: auto;
+       
         display: flex;
         align-items: center;
         justify-content: center;
@@ -258,5 +259,22 @@ header .nav-button{
         
         margin: 0 0 0 3rem;
         font-size: 1rem;
+    }
+}
+@media (max-height:560px ) {
+    .Container_Button .nav-button {
+       
+        font-size: 1rem;
+        
+    }
+}
+
+@media (max-height:250px ) {
+    .Container_Button .nav-button {
+       
+        font-size: 1rem;
+        border-radius: 2px;
+        margin: 0 0 0 4rem;
+        height: 10rem;
     }
 }
