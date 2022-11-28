@@ -43,6 +43,7 @@ const CreateAccount = () => {
                             UserCarrera : UserCarrera,
                             photoURL : downloadURL
                         });
+                        await setDoc(doc(db,"userGroups", res.user.uid),{});
                         navigate('/UserPage');
                     });
                 }

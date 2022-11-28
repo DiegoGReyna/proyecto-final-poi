@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext} from "react";
 import { v4 as uuid } from "uuid";
 import './DashboardSubGrups.css'
 import { db } from "../../firebase";
-import { doc, setDoc, onSnapshot, collection, arrayUnion } from "firebase/firestore";
+import { arrayUnion, doc, collection, updateDoc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
 import { AuthContext } from "../../context/AuthContext";
 
 import SubGrup from '../../componenetes/SubGrup/SubGrup';
@@ -12,8 +12,8 @@ const DashboardSubGrups = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [modal ,setModal]=useState(false);
     const [ groupName, setgroupName ] = useState("");
-    const [allChats, setAllChats] = useState([]);
-    const [chats, setChats] = useState([]);
+    const [ chats, setChats ] = useState([]);
+    const documentGroup = doc(db, "userGroups", currentUser.uid);
 
 
     const toggleModal=()=>{
@@ -24,11 +24,36 @@ const DashboardSubGrups = () => {
         const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
             setUserInfo(doc.data());
         });
-        return newUser
+        return newUser;
+    }, [currentUser.uid]);
+
+    useEffect (() => {
+        const unSub = onSnapshot(doc(db, "userGroups", currentUser.uid), (doc) => {
+            setChats(doc.data().groups);
+        })
+        return unSub;
     }, [currentUser.uid]);
 
     const AddGroup = async () =>{
         const chatId = uuid();
+        const coll = collection(db, "userGroups");
+        const docSnap = await getDoc(doc(coll, currentUser.uid));
+        if(docSnap._document != null){
+            await updateDoc(documentGroup, {
+                groups: arrayUnion({
+                    uid : chatId,
+                groupName : groupName,
+                })
+            });
+        }
+        else{
+            await setDoc(documentGroup, {
+                groups: arrayUnion({
+                    uid : chatId,
+                    groupName : groupName,
+                })
+            });
+        }
         await setDoc(doc(db, "groupMembers", chatId), {
             uid : chatId,
             groupName : groupName,
@@ -39,29 +64,12 @@ const DashboardSubGrups = () => {
         });
         await setDoc(doc(db, "groupMessages", chatId), {
             uid : chatId,
-            
+            groupName : groupName,
         });
         setModal(!modal)
     }
 
-    useEffect(() =>{
-        onSnapshot(collection(db, 'groupMembers'), (snapshot) =>{
-        //setAllChats(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
-
-        setAllChats(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
-        /*for(var i = 0; i < allChats.length;  i++){
-            for(var j = 0; j < allChats[i].members.length; j++){
-                if(allChats[i].members[j].memberid == currentUser.uid){
-                    console.log(allChats[i].members[j].MemberName);
-                    setChats(current  => {[...current , allChats[i]]});
-                    break;
-                    
-                }
-            }
-        }*/
-
-        });
-      }, [allChats]);
+    
 
     return (
         <div className='Container_DashBoardSubGrups'>
@@ -97,14 +105,16 @@ const DashboardSubGrups = () => {
                         <button  onClick={toggleModal} className='Button_AgregarSubGrupo'>Agregar subGrupo</button>
                     </div>
                     <div className='Container_Subgrupos'>
-
                     {
-                        allChats.map(chat => 
-                        <SubGrup
-                        groupName={chat.groupName}
-                        groupId={chat.uid}
-                        />
-                        )
+                        chats != undefined ?
+                            chats.map(chat => 
+                                <SubGrup
+                                groupName={chat.groupName}
+                                groupId={chat.uid}
+                                />
+                            )
+                        :
+                        null
                     }
 
                     </div>

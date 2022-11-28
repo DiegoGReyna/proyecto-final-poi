@@ -32,15 +32,18 @@ export const RenderedPosts = () => {
     <div className='Container_RenderedPosts'>
     <div className='box_Posts'>
         {
-          posts.map(post =>
-          <Post
-            Date={post.datePost} 
-            UserName={post.posterName} 
-            PostContent={post.postContent} 
-            UserImage={post.posterImage}
-            PostType={post.postType}
-          />
-          )
+          posts != undefined ?
+            posts.map(post =>
+            <Post
+              Date={post.datePost} 
+              UserName={post.posterName} 
+              PostContent={post.postContent} 
+              UserImage={post.posterImage}
+              PostType={post.postType}
+            />
+            )
+          :
+              null
         }
     </div>
     
