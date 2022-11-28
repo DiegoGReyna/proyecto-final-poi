@@ -4,7 +4,7 @@ import './GroupMembers.css'
 import { useLocation } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { doc, setDoc, onSnapshot, collection, arrayUnion, updateDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, onSnapshot, collection, arrayUnion, updateDoc } from "firebase/firestore";
 
 const GroupMembers = () => {
     const location = useLocation();
@@ -14,26 +14,33 @@ const GroupMembers = () => {
     const [modal ,setModal]=useState(false);
     const [ correoMember, setcorreoMember ] = useState("");
     const [ members, setMembers] = useState([]);
+    const [ group, setGroup] = useState([]);
     const [ addMember, setAddMember] = useState([]);
 
 
     const toggleModal=()=>{
       setModal(!modal)
     }
+
     const AddMember = async () =>{
         
 
-        onSnapshot(collection(db, 'users'), (snapshot) =>{
+        await onSnapshot(collection(db, 'users'), (snapshot) =>{
             setAddMember(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         });
-
-        addMember.forEach((member)=>{
-
+        addMember.forEach((member) =>{
+            console.log(member);
             if(member.UserEmail == correoMember && member.uid != currentUser.uid){
                 updateDoc(doc(db, "groupMembers", groupId), {
                     members: arrayUnion({  
                         id: member.uid,
-                        MemberName: member.UserName
+                        MemberName: member.UserName,
+                    })
+                });
+                updateDoc(doc(db, "userGroups", member.uid), {
+                    groups: arrayUnion({
+                        uid : groupId,
+                        groupName: group.groupName,
                     })
                 });
             }
@@ -43,7 +50,8 @@ const GroupMembers = () => {
     
     useEffect (() => {
         const unSub = onSnapshot(doc(db, "groupMembers", groupId), (doc) => {
-            doc.exists() && setMembers(doc.data().members)
+            setGroup(doc.data());
+            setMembers(doc.data().members);
         })
 
         return () => {
@@ -92,7 +100,6 @@ const GroupMembers = () => {
                         {
                             members.map(member => 
                             <label className='MiembroNombre'>{member.MemberName}</label>
-                            
                             )
                         }
                     </div>
