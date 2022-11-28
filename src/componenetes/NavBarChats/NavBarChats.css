@@ -159,6 +159,8 @@ header .nav-button{
     width: 5%;
 }
 @media (max-width: 1024px){
+    
+
     .Container_PrivChatButton {
         display: flex;
         width: 100%;
