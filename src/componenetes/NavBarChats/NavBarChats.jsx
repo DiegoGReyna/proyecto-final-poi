@@ -68,7 +68,7 @@ const NavBarChats = () => {
             <button 
                onClick={showNavBar}
               className='nav-button'>
-              Agregar chat
+               Ver chats
             </button>
           </div>
 

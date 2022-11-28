@@ -41,16 +41,27 @@ const TextBarGroup = (props) => {
     <div className='Container_TextBar'>
         <div className='Box_TextBar'>
             <div className='Form_TextBar'>
-              
+            <div className="inputTextButtonSend">
                 <input placeholder='Escribe un mensaje' className='Input_Text' type="text" onChange={e=>setText(e.target.value)} value={text} id="textId"/>
             
-                <button className='Button_SendMassage' onClick={sendMessage}></button>    
-
+                <button className='Button_SendMassage' onClick={sendMessage}></button>
+            </div>
+            <div className="ContainerButtons">
                 
 
-                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage"></label>
+                {/* <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage"></label>
                 <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" />
+                <button className='Button_SendLocation'></button> */}
+                <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
+                <input type="file" className='Input_File'  id="Id_Labe_UploadFile"/>
+
+                <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
+                <input type="file" className='Input_File'  id="Id_Labe_UploadImage" />
+
                 <button className='Button_SendLocation'></button>
+
+
+              </div>
             </div>
         </div>
     </div>

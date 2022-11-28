@@ -86,15 +86,15 @@ export const TextBarMainGroup = () => {
     <div className='Container_TextBar'>
         <div className='Box_TextBar'>
             <div className='Form_TextBar'>
-              <div className="ContainerInputTextSendMessage">
+              <div className="inputTextButtonSend">
               <input placeholder='Escribe un mensaje' className='Input_Text' type="text" onChange={e=>setText(e.target.value)} value={text} id="textId"/>
-                
                 <button className='Button_SendMassage' onClick={sendMessage}></button>  
-
                 </div>   
-              <div className="ContainerSendFilesImgs">
+              <div className="ContainerButtons">
+                <label className="Labe_UploadFile" htmlFor="Id_Labe_UploadFile"></label>
+                <input type="file" className='Input_File'  id="Id_Labe_UploadFile"/>
                 <label className="Labe_UploadImage" htmlFor="Id_Labe_UploadImage" ></label>
-                <input type="file" className='Input_File' name="" id="Id_Labe_UploadImage" onChange={sendImage}/>
+                <input type="file" className='Input_File'  id="Id_Labe_UploadImage" />
                 <button className='Button_SendLocation'></button>
               </div>
 

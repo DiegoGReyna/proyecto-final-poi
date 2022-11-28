@@ -57,7 +57,7 @@ const ChatCallBarr = (props) => {
       {modalVideoCall && (
                   <div className='modal'>
                   <div className='overlay'></div>
-                  <div className='modal_content'>
+                  <div className='modal_contentVideoCall'>
                   <h2 className='TitleText' >Video llamada en curso</h2>
                     <div  className='Container_UserCallOption' >
                     <div className='Container_Call'>

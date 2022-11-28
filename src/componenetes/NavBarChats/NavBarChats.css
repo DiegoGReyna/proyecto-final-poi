@@ -6,6 +6,7 @@
     flex-direction: column-reverse;
     justify-content: flex-end;
     align-items: center;
+    
 }
 .Container_ChatsButtons{
     height: 90%;
@@ -27,7 +28,12 @@
     align-items: center;
 
 }
-
+.Button_Nav button{
+font-family: 'Poppins', sans-serif;
+    font-size: 0.75vw;
+    color: var(--Color6);
+    font-weight:bold;
+}
 .Button_Nav{
     height: 50%;
     width: 70%;
@@ -199,7 +205,13 @@ header .nav-button{
         background: transparent;
     }
     header .nav-button{
+        font-family: 'Poppins', sans-serif;
         
+    color: var(--Color6);
+    font-weight:400;
+    
+    width:100%;
+    font-size: 1.5rem;
         visibility: visible;
         opacity: 1;
     }
@@ -233,5 +245,18 @@ header .nav-button{
     .button-close button{
         width: 10%;
     }
-
+    .Container_Button .nav-button{
+        
+        margin: 0 0 0 2rem;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        width: 6.5rem;
+    }
+}
+@media (max-width:280px) {
+    .Container_Button .nav-button{
+        
+        margin: 0 0 0 3rem;
+        font-size: 1rem;
+    }
 }

@@ -128,10 +128,13 @@
     }
     
     .ImgTeam {
-        width: 5rem;
-        height: 5rem;
-        border-radius:100%;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 2.5rem;
         border: 4px solid var(--Color6);
+    }
+    .TeamNavLinkNombreEquipo{
+        font-size: 4vw;
     }
     
 }

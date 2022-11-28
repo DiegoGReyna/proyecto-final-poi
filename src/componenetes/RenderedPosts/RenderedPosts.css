@@ -41,13 +41,22 @@
 }
 
 
-
+@media (max-width:1024px) {
+    .Container_RenderedPosts{
+        width: 90%;
+      }
+}
 
 @media (max-width:520px ) {
     ::-webkit-scrollbar{
         width: 1rem;
         
     }
+
+    
+       
+    
+
 
   }
 

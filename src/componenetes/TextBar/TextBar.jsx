@@ -231,6 +231,7 @@ const sendFile = async (e) => {
                 <input type="file" className='Input_File' onChange={sendImage} id="Id_Labe_UploadImage" />
 
                 <button className='Button_SendLocation'></button>
+                
                 </div>
             </div>
         </div>

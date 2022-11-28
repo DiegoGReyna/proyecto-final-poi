@@ -201,8 +201,8 @@ nav{
     }
     
     .ImgTeam {
-        width: 5rem;
-        height: 5rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 2.5rem;
         border: 4px solid var(--Color6);
     }
@@ -215,5 +215,8 @@ nav{
     header .TeamNavLink {
         font-size: 6vw;
 
+    }
+    .TeamNavLinkNombreEquipo{
+        font-size: 4vw;
     }
 }
