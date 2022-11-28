@@ -14,3 +14,9 @@
         padding: 2.5rem;
     }
 }
+
+@media (max-width:280px ){
+    .ContainerTareasPage {
+        padding: 0.5rem;
+    }
+}

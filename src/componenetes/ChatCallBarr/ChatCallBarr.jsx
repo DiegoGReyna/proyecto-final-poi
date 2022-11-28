@@ -29,7 +29,7 @@ const ChatCallBarr = (props) => {
       {modalCall && (
             <div className='modal'>
             <div className='overlay'></div>
-            <div className='modal_content'>
+            <div className='modal_contentCall'>
            
             <h2 className='TitleText' >LLamada en curso</h2>
           

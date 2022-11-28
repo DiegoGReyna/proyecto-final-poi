@@ -55,6 +55,7 @@
 header .nav-btn{
     visibility: hidden;
     opacity: 0;
+    background-color: transparent;
     
     
 }
@@ -147,8 +148,23 @@ nav{
         transform: none;
     }
 }
-
-
+@media (max-width:912px ){
+    .nav-btn button {
+      
+        width: 10%;
+        height: 60%;
+    }
+}
+@media (max-width:360px ){
+    .nav-btn button {
+      
+        width: 15%;
+        height: 60%;
+    }
+    header .TeamNavLink{
+        font-size: 6vw;
+    }
+}
 @media (max-width:280px ) {
     .BoxNavBarTeam {
         background-color: var(--Color5);
@@ -190,5 +206,14 @@ nav{
         border-radius: 2.5rem;
         border: 4px solid var(--Color6);
     }
-    
+    .nav-btn button {
+        
+        height: 50%;
+        width: 15%;
+    }
+
+    header .TeamNavLink {
+        font-size: 6vw;
+
+    }
 }

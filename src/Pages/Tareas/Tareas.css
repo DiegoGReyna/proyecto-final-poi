@@ -36,13 +36,20 @@
     flex-direction:column;
     
 }
-.ContainerLinksAnbuttonsAssignmets{
+/* .ContainerLinksAnbuttonsAssignmets{
     display: flex;
     height: auto;
     width: 100%;
     gap: 1rem;
+} */
+.ContainerLinksAnbuttonsAssignmets{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 15%;
 }
-
 .ButtonListAssignment{
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -96,8 +103,8 @@
 
     
     width: 100%;
-    height: 66rem;
-    align-items: center;
+    height: 80%;
+    align-items: start;
     display: grid;
     grid-template-columns: 100%;
     overflow: auto;
@@ -181,4 +188,70 @@
         background-color: var(--Color4);
         border-radius: 0.5rem;
     }
+}
+
+@media (max-width:912px ) {
+    .LinkListAssignment {
+      
+        font-size: 1.5vw;
+        height: 100%;
+        padding: 0 1rem;
+        border-radius: 0.5rem;
+    }
+    .ButtonListAssignment{
+        font-size: 1.5vw;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width:520px ) {
+    
+    .LinkListAssignment {
+      
+        font-size: 2.5vw;
+        height: 100%;
+        padding: 0 0.5rem;
+        border-radius: 0.5rem;
+    }
+    .ButtonListAssignment{
+        font-size: 2.5vw;
+        padding: 0 0.5rem;
+    }
+    .TittleBoxTareas {
+        height: 10%;
+        margin-top: 1rem;
+    }
+    .ContainerLinksAnbuttonsAssignmets{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width:360px ) {
+
+    .TittleBoxTareas{
+        margin-top: 0;
+    }
+    .TareaText{
+        font-size: 7vw;
+    }
+    
+}
+
+@media (max-width:280px ) {
+
+    .LinkListAssignment {
+        font-size: 4vw;
+        height: 100%;
+        padding: 0;
+        border-radius: 0.5rem;
+    }
+    .ButtonListAssignment {
+        font-size: 4vw;
+        padding: 0;
+    }
+
+    
 }

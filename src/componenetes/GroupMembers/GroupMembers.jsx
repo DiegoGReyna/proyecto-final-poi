@@ -59,9 +59,13 @@ const GroupMembers = () => {
             <div className='modal_content'>
             <div className='Container_CancelModal'>
                 <button
-                className='Button_Cancel'
+                className='Button_CancelMadal'
                 onClick={toggleModal}
-                >X
+                >
+                    <span className="material-symbols-outlined">
+                            X
+                            </span>
+
                 </button>
             </div>
             <h2 className='TitleText' >Agregar Miembro</h2>
