@@ -30,14 +30,16 @@ const RenderedGroupMessages = (props) => {
                 messages.map(message => 
                     message.senderId == currentUser.uid ?
                     <MessaByUser 
-                    sendedTime="21:10"
-                    text={message.text}
+                    sendedTime={message.dateMessage}
+                    content={message.messageContent}
+                    messageType={message.messageType}
                     />
                     : 
-                    <MessagesFromOthers 
+                    <MessagesFromOthers
                     userName={message.senderName}
-                    sendedTime="22:50"
-                    text={message.text}
+                    sendedTime={message.dateMessage}
+                    content={message.messageContent}
+                    messageType={message.messageType}
                     />
                 )
                 :

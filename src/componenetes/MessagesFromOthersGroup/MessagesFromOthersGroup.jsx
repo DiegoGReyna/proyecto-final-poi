@@ -17,7 +17,15 @@ function MessagesFromOthersGroup(props){
 
           </div>
           <div className="Box_MessagesFromOthers_Text">
-          <p>{props.text}</p>
+          {
+            props.messageType == 1 ?
+            <p>{props.content}</p>
+            :
+            props.messageType == 2 ?
+            <img src={props.content} alt="" width="60px" height="60px"/>
+            :
+            <a href={props.content} target="_blank">File</a>
+          }
           </div>
         </div>
       </dir>

@@ -26,7 +26,8 @@ const TextBarGroup = (props) => {
       await updateDoc( doc(db, "groupMessages", props.groupId), {
         messages: arrayUnion({
             id: uuid(),
-            text,
+            messageContent: text,
+            messageType:1,
             senderId: currentUser.uid,
             senderName: user.UserName,
             dateMessage: _date,

@@ -95,8 +95,8 @@
     overflow: auto;
 }
 .Box_ChatCallBarr .modal_contentVideoCall{
-    width: 45%;
-    height: 65%;
+    width: 50%;
+    height: 90%;
     position: absolute;
     overflow: auto;
     background: var(--Color3);

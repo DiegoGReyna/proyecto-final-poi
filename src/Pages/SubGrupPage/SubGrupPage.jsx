@@ -25,7 +25,8 @@ const SubGrupPage = () => {
     <div className='Container_SubGrupPage'>
         <NavBarSubgrup 
             nombreSubGrupo={groupInfo.groupName}
-            groupId={groupInfo.uid}/>
+            groupId={groupInfo.uid}
+            groupPhoto={groupInfo.photoURL}/>
       
           <Routes>
                 <Route path="SubGrupoChat/*" element={<SubGrupChatPage />} />
