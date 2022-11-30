@@ -172,190 +172,162 @@
     padding: 1px;
 }
 
-@media (max-width:768px ) {
-    .PerfilText {
-       
+@media (max-width: 375) {
+    .ContainerPerfil {
+        display: flex;
+        background-color: var(--Color2);
+        width: 50%;
+        height: 51rem;
+        box-shadow: 0px 4px 40px 10px rgb(0 0 0 / 60%);
+        border-radius: 2.5rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+    }
+    .FormPerfil{
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    .InpSubmit1{
+        height: 6rem;
+        width: 12rem;
+        background-color: var(--VerdeFuerte);
+        transition: all 0.5s;
+        font-size: 1.5rem;
         font-weight: bold;
-        font-size: 6vw;
-        margin-bottom: 1.5rem;
+        font-family: 'Poppins', sans-serif;
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        padding: 5px;
     }
-    
-    .TextoPerfil {
-        padding: 1rem;
+    .ContainerPerfil form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
-    .DataPerfilBox label {
+    .BoxPerfil {
+        height: 10%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    .PerfilText {
+        text-align: center;
+        color: whitesmoke;
         font-weight: bold;
         font-size: 3.5vw;
-        color: whitesmoke;
+        margin-bottom: 3rem;
     }
-    .ContainerPerfil {
-       
-        width: 50rem;
-        height: 50rem;
-    
-    }
-
-
-    .ContainerImgPerf {
-        width: 15rem;
-        height: 15rem;
-        border-radius: 100%;
-        background-color: var(--Color4);
-    }
-
-}
-@media (max-width:600px ) {
-    .PerfilText {
-        font-size: 8vw;
-        margin-bottom: 1.5rem;
-    }
-    .TextoPerfil {
-        padding: 1rem;
+    .DataPerfilBox {
+        /* height: 80%; */
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .DataPerfilBox label {
         font-weight: bold;
-        font-size: 4vw;
+        font-size: 2vw;
         color: whitesmoke;
     }
     .InpStyle {
-        border-radius: 10px;
-        height: 3.5rem;
-        margin: 1.5rem 0 1.5rem 0;
-        font-size: 1.5rem;
-    }
-
-    .InpSubmit {
-        height: 4rem;
-       
-        font-size: 1.5rem;
-        border-radius: 1rem;
-    }
-
-}
-@media (max-width:520px ) {
-    .ContainerImgPerf {
-        
-        width: 10rem;
-        height: 10rem;
-        border-radius: 100%;
-        background-color: var(--Color4);
-    }
-   
-    .TextoPerfil {
-        padding: 0.5rem 0 0.5rem 0;
-    }
-    .ContainerImgPerf {
-        
-        margin-bottom: 1rem;
-    }
-    .ContainerPerfil {
-        box-shadow: 0px 2px 20px 5px rgb(0 0 0 / 90%);
-        width: 30rem;
-        height: 40rem;
-    
-    }
-
-    .InpStyle {
-        border-radius: 10px;
-        height: 3rem;
-        box-shadow: 0px 0px 10px 5px #000000;
-        margin: 1.5rem 0 1.5rem 0;
-        font-size: 1.2rem;
-    }
-
-    .InpSubmit {
-        height: 3.5rem;
-        font-size: 1.5rem;
-        border-radius: 1rem;
-    }
-   
-
-}
-@media (max-width:375px ) {
-    .PerfilText {
-        font-size: 9vw;
-        margin-bottom: 1rem;
-    }
-
-    .TextoPerfil {
-        padding: 0.5rem 0 0.5rem 0;
-    }
-    .ContainerImgPerf {
-        
-        width: 9rem;
-        height: 9rem;
-        border-radius: 100%;
-        background-color: var(--Color4);
-    }
-    .ContainerPerfil {
-       
-        width: 20rem;
-        height: 30rem;
-    
-    }
-
-    .InpStyle {
-        border-radius: 5px;
-        height: 2rem;
-        box-shadow: 0px 0px 5px 2.5px #000000;
-        margin: 1.5rem 0 1.5rem 0;
-        font-size: 1.2rem;
-    }
-
-    .InpSubmit {
-        height: 2.5rem;
-     
-        font-size: 1.3rem;
-        border-radius: 1rem;
-        border-radius: 0.5rem;
-    }
-   
-
-}
-@media (max-width:912px ) {
-    .PerfilText {
-        font-size: 9vw;
-        margin-bottom: 1rem;
-    }
-
-    .TextoPerfil {
-        padding: 0;
-    }
-    .ContainerImgPerf {
-        width: 8rem;
-        height: 8rem;
-        
-        border-radius: 100%;
-        background-color: var(--Color4);
-    }
-    .ContainerPerfil {
-        
-        border-radius: 1rem;
-        width: 15rem;
-        height: 28rem;
-    }
-
-    .InpStyle {
-        border-radius: 2px;
-        height: 1.5rem;
-        margin: 1.5rem 0 1.5rem 0;
-        font-size: 0.9rem;
-    }
-
-    .InpSubmit {
-        height: 2rem;
         width: 100%;
-        font-size: 1.3rem;
+        box-shadow: 0px 0px 20px 10px #000000;
+        border-radius: 10px;
+        height: 3.5rem;
+        background-color: var(--Color6);
+        margin: 2rem 0 2rem 0;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        font-size: 2rem;
+        text-align: center;
+        border: none;
     }
-   
-
+    .InpSubmit {
+        height: 6rem;
+        width: 12rem;
+        background-color: var(--VerdeFuerte);
+        transition: all 0.5s;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+        border: none;
+        cursor: pointer;
+    }
+    .checkclass{
+        color: #2D750C;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .incheck{
+        width: 30px;
+        height: 30px;
+        box-shadow:0px 0px 50px 5px #000000;
+        align-items: center;
+        padding: 5px
+    }
+    .Lblestado{
+        color: #2D750C;
+    }
+    .TextoPerfil {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        padding: 0rem;
+    }
+    .ContainerImgPerf{
+        width: 40rem;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #InptFileCreateAccount{
+        display: none;
+    }
+    .ContainerImgPerf img{
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        padding: 5rem;
+    }
+    .InpFileStyle{
+        color: red;
+        background-color: #2D750C;
+    }
+    .BoxImageCreateAccout{
+        padding: 1px;
+    }
+ 
 }
 
 @media (max-width:1024px ) {
     .ContainerPerfil {
         display: flex;
         background-color: var(--Color2);
-        width: 70rem;
+        width: 70%;
         height: 51rem;
         box-shadow: 0px 4px 40px 10px rgb(0 0 0 / 60%);
         border-radius: 2.5rem;
@@ -425,7 +397,7 @@
         color: whitesmoke;
     }
     .InpStyle {
-        width: 100%;
+        width: 65%;
         box-shadow: 0px 0px 20px 10px #000000;
         border-radius: 10px;
         height: 3.5rem;
