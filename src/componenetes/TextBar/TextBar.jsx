@@ -345,7 +345,11 @@ const TextBar = () => {
                 <input type="file" className='Input_File' onChange={sendImage} id="Id_Labe_UploadImage" />
 
                 <button className='Button_SendLocation' onClick={getUserCoordinates}></button>
+
+                <div className="Container_CheckBox">
+                <label htmlFor="id_Active">encriptar:</label>
                 <input type="checkbox" id="id_Active" onChange={e=>setIsEncrypted(!isEncrypted)}/>
+                </div>
                 
                 </div>
             </div>
