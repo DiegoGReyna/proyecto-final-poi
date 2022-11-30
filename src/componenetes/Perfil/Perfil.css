@@ -179,7 +179,7 @@
         font-size: 6vw;
         margin-bottom: 1.5rem;
     }
-
+    
     .TextoPerfil {
         padding: 1rem;
     }
@@ -217,28 +217,6 @@
         font-size: 4vw;
         color: whitesmoke;
     }
-    .ContainerPerfil {
-       
-        width: 40rem;
-        height: 45rem;
-    
-    }
-
-
-    .ContainerImgPerf {
-        width: 14rem;
-        height: 14rem;
-        border-radius: 100%;
-        background-color: var(--Color4);
-    }
-
-    .ContainerImgPerf img{
-        height: 100%;
-        width: 100%;
-        border-radius: 100%;
-        padding: 0.5rem;
-    }
-
     .InpStyle {
         border-radius: 10px;
         height: 3.5rem;
@@ -334,7 +312,7 @@
    
 
 }
-@media (max-width:280px ) {
+@media (max-width:912px ) {
     .PerfilText {
         font-size: 9vw;
         margin-bottom: 1rem;
