@@ -32,8 +32,7 @@ import { AuthContext } from "../../context/AuthContext";
             <NavLink className='MainNavLink' to={user.UserCarrera+"/Posts"}>{user.UserCarrera}</NavLink>
             <NavLink className='MainNavLink' to='SubGrupos'>SubGrupos</NavLink>
             <NavLink className='MainNavLink' to='Chats'>Chats</NavLink>
-            <NavLink className='MainNavLink' to='Logros'>Logros</NavLink>
-            <NavLink className='MainNavLink' to='Tareas'>Tareas</NavLink>
+           
             <button  className='MainbuttonLink' onClick={()=> {signOut(auth); navigate('/')}}>Salir</button>
         </div>
     )
