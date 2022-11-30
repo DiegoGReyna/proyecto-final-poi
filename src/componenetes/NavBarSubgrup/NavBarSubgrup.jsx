@@ -25,6 +25,7 @@ const NavBarSubgrup = (props) => {
         <nav ref={navRef}>
                    
 
+                {/* <NavLink className='TeamNavLink' to='Assignments/DashBoard' state={{ groupId: props.groupId }} >Tareas</NavLink> */}
                 <NavLink className='TeamNavLink' to='SubGrupoChat' state={{ groupId: props.groupId }}>Chat</NavLink>
                 <NavLink className='TeamNavLink' to='GroupMembers' state={{ groupId: props.groupId }}>Integrantes</NavLink>
                 <div className='nav-btn' >

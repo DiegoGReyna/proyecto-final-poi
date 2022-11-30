@@ -9,16 +9,27 @@ import { CreateAssignmentModal } from '../../componenetes/Modales/CreateAssignme
 import { CompletedAssignmentsList } from "../../componenetes/CompletedAssignmentsList/CompletedAssignmentsList";
 import { ToDoAssignmetsList } from "../../componenetes/ToDoAssignmetsList/ToDoAssignmetsList";
 import { UnderRevisionAssignmetsList } from "../../componenetes/UnderRevisionAssignmetsList/UnderRevisionAssignmetsList";
+import { AuthContext } from "../../context/AuthContext";
 export const Tareas = (props) =>{
-    const location = useLocation();
-  const { groupId } = location.state;
-  const [ groupInfo, setgroupInfo] = useState([]);
+  //   const location = useLocation();
+  // const { groupId } = location.state;
+  // const [ groupInfo, setgroupInfo] = useState([]);
 
-  useEffect (() => {
-    const unSub = onSnapshot(doc(db, "groupMembers", groupId), (doc) => {
-      setgroupInfo(doc.data())
-    })
-  }, [groupId])
+  // useEffect (() => {
+  //   const unSub = onSnapshot(doc(db, "groupMembers", groupId), (doc) => {
+  //     setgroupInfo(doc.data())
+  //   })
+  // }, [groupId])
+  const {currentUser} = useContext(AuthContext);  
+  const [user, setUser] = useState([]);
+  useEffect(() =>{
+    const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
+      setUser(doc.data());
+    });
+    return newUser
+  }, [currentUser.uid]);
+
+
 
     const [openModalAssignment,setOpenModalAssignment]=useState(false);
     return (
@@ -27,9 +38,9 @@ export const Tareas = (props) =>{
                 <h2 className="TareaText">Tareas</h2>            
             </div>
             <div className="ContainerLinksAnbuttonsAssignmets">
-            <NavLink className="LinkListAssignment"  to='ToDo' state={{ groupId: props.groupId }}>Pendientes</NavLink>
-            <NavLink className="LinkListAssignment" to='Completed' state={{ groupId: props.groupId }}>Revisadas</NavLink>
-            <NavLink  className="LinkListAssignment" to='UnderRevision' state={{ groupId: props.groupId }}>Por revisar</NavLink>
+            <NavLink className="LinkListAssignment"  to='ToDo' >Pendientes</NavLink>
+            <NavLink className="LinkListAssignment" to='Completed' >Revisadas</NavLink>
+            <NavLink  className="LinkListAssignment" to='UnderRevision' >Por revisar</NavLink>
 
             <button  className="ButtonListAssignment"  style={{display:props.display }} onClick={()=>{
                  setOpenModalAssignment(true);
