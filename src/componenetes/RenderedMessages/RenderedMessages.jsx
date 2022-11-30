@@ -36,22 +36,27 @@ const RenderedMessages = () => {
         <div className='Container_RenderedMessages'>
             <div className='box_Messages'>
             {
-                messages.map(message => 
-                    message.senderId == currentUser.uid ?
-                    <MessaByUser 
-                    sendedTime={message.date}
-                    content={message.messageContent}
-                    messageType={message.messageType}
-                    />
-                    : 
-                    <MessagesFromOthers 
-                    userName={userTo.UserName}
-                    sendedTime={message.date}
-                    content={message.messageContent}
-                    userImage={userTo.photoURL}
-                    messageType={message.messageType}
-                    />
-                )
+                messages != undefined ?
+                    messages.map(message => 
+                        message.senderId == currentUser.uid ?
+                        <MessaByUser 
+                        sendedTime={message.date}
+                        content={message.messageContent}
+                        messageType={message.messageType}
+                        isEncrypted={message.isMessageEncrypted}
+                        />
+                        : 
+                        <MessagesFromOthers 
+                        userName={userTo.UserName}
+                        sendedTime={message.date}
+                        content={message.messageContent}
+                        userImage={userTo.photoURL}
+                        messageType={message.messageType}
+                        isEncrypted={message.isMessageEncrypted}
+                        />
+                    )
+                :
+                null
             }
                 
             </div>

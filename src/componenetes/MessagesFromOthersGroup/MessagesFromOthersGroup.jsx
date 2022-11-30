@@ -24,7 +24,10 @@ function MessagesFromOthersGroup(props){
             props.messageType == 2 ?
             <img src={props.content} alt="" width="60px" height="60px"/>
             :
+            props.messageType == 3 ?
             <a href={props.content} target="_blank">File</a>
+            :
+            <a href={props.content} target="_blank">Ubicación</a>
           }
           </div>
         </div>

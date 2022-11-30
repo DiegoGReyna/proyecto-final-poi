@@ -1,8 +1,14 @@
 import React from 'react'
 import './MessagesFromOthers.css'
+import {decode as base64_decode, encode as base64_encode} from 'base-64';
 
 function MessagesFromOthers(props){
+  var messageText = "";
 
+  if(props.isEncrypted)
+    messageText = base64_decode(props.content);
+  else
+    messageText = props.content;
 
   return (
     <div className='Container_MessageFromOthers'>
@@ -24,11 +30,15 @@ function MessagesFromOthers(props){
           <div className="Box_MessagesFromOthers_Text">
             {
               props.messageType == 1 ?
-              <p>{props.content}</p>
-              : props.messageType == 2 ?
-              <img src={props.content} alt="" width="60px" height="60px"/>
+              <p>{messageText}</p>
+              : 
+              props.messageType == 2 ?
+              <img src={messageText} alt="" width="60px" height="60px"/>
+              : 
+              props.messageType == 3 ?
+              <a href={messageText} target="_blank">File</a>
               :
-              <a href={props.content} target="_blank">File</a>
+              <a href={messageText} target="_blank">Ubicación</a>
             }
           </div>
         </div>
