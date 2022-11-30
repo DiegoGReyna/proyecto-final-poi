@@ -9,7 +9,7 @@ import React, { useEffect, useState, useContext} from "react";
 import {db} from "../../firebase"
 import { MainGroupPostsPage } from '../MainGroupPostsPage/MainGroupPostsPage';
 import { AuthContext } from "../../context/AuthContext";
-import { TareasPage } from "../TareasPage/TareasPage";
+
 export const MainGroupPage = () => {
 
   const [user, setUser] = useState([]);

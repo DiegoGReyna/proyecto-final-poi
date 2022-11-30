@@ -52,6 +52,12 @@
     border: 4px solid var(--Color6);
 }
 
+.ImgTeam img{
+ width: 100%;
+ height: 100%;
+ border-radius: 100%;
+}
+
 header .nav-btn{
     visibility: hidden;
     opacity: 0;
