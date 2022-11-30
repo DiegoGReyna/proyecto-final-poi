@@ -8,9 +8,8 @@ import { onSnapshot, collection} from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
 import {db} from "../../firebase"
 import { MainGroupPostsPage } from '../MainGroupPostsPage/MainGroupPostsPage';
-
 import { AuthContext } from "../../context/AuthContext";
-
+import { TareasPage } from "../TareasPage/TareasPage";
 export const MainGroupPage = () => {
 
   const [user, setUser] = useState([]);
@@ -33,7 +32,14 @@ export const MainGroupPage = () => {
       <NavBarMainGroup nombreGrupo={user.UserCarrera} />
       
       <Routes>
-       <Route path="Posts" element={<MainGroupPostsPage />} />      
+       <Route path="Posts" element={<MainGroupPostsPage />} /> 
+       <Route path="Assignments/*" element={<TareasPage 
+                
+                // nombreSubGrupo={user.UserCarrera}
+                
+                
+                />} />
+
       </Routes>
       
     </div>

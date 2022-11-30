@@ -12,7 +12,7 @@ export const CheckAssignment = (props) => {
                     <h1>{props.AssignmentName}</h1>
                     <div className='Container2Buttons' >
                         <button  className='Buttons' type='submit'>Revisar</button>
-                        <NavLink   state={{ groupId: props.groupId }}    className='ButtonsLink' to="/UserPage/SubGrupos/SubGrupo/Assignments/DashBoard">Atras</NavLink>
+                        <NavLink   /*state={{ groupId: props.groupId }}*/   className='ButtonsLink' to={`/UserPage/${props.CurrentGroup}/Assignments/DashBoard`}>Atras</NavLink>
                     </div>
             </div>
             <div className='ContainerDataAssigment'>
