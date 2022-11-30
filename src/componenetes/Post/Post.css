@@ -62,7 +62,11 @@
   padding: 1rem;
   word-break: break-all;
 }
-
+.PostMessage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
 .PostUserName{
   font-weight: 600;
   font-size: 1.2vw;
@@ -130,6 +134,7 @@
   }
   .PostDate {
     font-size: 2vw;
+    height: auto;
   }
   .PostMessage {
     font-size: 3vw;
@@ -143,8 +148,8 @@
 }
 
   .PostUserImage {
-    width: 8rem;
-    height: 8rem;
+    width: 6.5rem;
+    height: 6.5rem;
     padding:3px;
   }
   .box_Posts{
@@ -160,20 +165,24 @@
 
 }
 @media (max-width:360px ) {
+  .PostDate {
+    font-size: 1.5vw;
+  }
+  .PostMessage {
+    font-size: 3vw;
+  }
   .PostMessage{
     padding: 0.2rem;
   }
   .PostUserImage {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     padding:3px;
   }
   .PostUserName {
     font-size: 3vw;
   }
-  .PostDate {
-    font-size: 2.5vw;
-  }
+  
 
   
 .box_Posts{
@@ -187,8 +196,8 @@
 @media (max-width:280px ) {
   
   .PostUserImage {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
     
   }
   .PostUserName {
