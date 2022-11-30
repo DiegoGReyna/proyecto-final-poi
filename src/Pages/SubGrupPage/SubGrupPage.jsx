@@ -25,17 +25,13 @@ const SubGrupPage = () => {
     <div className='Container_SubGrupPage'>
         <NavBarSubgrup 
             nombreSubGrupo={groupInfo.groupName}
-            groupId={groupInfo.uid}/>
+            groupId={groupInfo.uid}
+            groupPhoto={groupInfo.photoURL}/>
       
           <Routes>
                 <Route path="SubGrupoChat/*" element={<SubGrupChatPage />} />
                 <Route path="GroupMembers/*" element={<GroupMembers />} />
-                <Route path="Assignments/*" element={<TareasPage 
                 
-                nombreSubGrupo={groupInfo.groupName}
-                groupId={groupInfo.uid}
-                
-                />} />
                 <Route path="Posts/*" element={<SubGroupPostsPage />} />
           </Routes>
     </div>

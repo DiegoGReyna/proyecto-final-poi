@@ -1,7 +1,15 @@
 import React from 'react'
 import './MessaByUser.css'
+import {decode as base64_decode, encode as base64_encode} from 'base-64';
 
 function MessaByUser(props) {
+  var messageText = "";
+
+  if(props.isEncrypted)
+    messageText = base64_decode(props.content);
+  else
+    messageText = props.content;
+
   return (
     <div className='Container_MessagesByUser'>
         <dir className="Box_MessagesByUser" >
@@ -12,12 +20,15 @@ function MessaByUser(props) {
         <div className="Box_MessagesByUser_Text">
           {
             props.messageType == 1 ?
-            <p>{props.content}</p>
+            <p>{messageText}</p>
             :
             props.messageType == 2 ?
-            <img src={props.content} alt="" width="60px" height="60px"/>
+            <img src={messageText} alt="" width="60px" height="60px"/>
             :
-            <a href={props.content} target="_blank">File</a>
+            props.messageType == 3 ?
+            <a href={messageText} target="_blank">File</a>
+            :
+            <a href={messageText} target="_blank">Ubicación</a>
           }
         </div>
         </div>

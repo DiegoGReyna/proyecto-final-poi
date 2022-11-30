@@ -94,17 +94,20 @@ export const Perfil = () => {
                   background:user.photoURL
                   ?`url("${user.photoURL}") no-repeat center/cover`
                   :`url(../img/perro.jpg) no-repeat center/cover`
-              }} className="BoxImageCreateAccout">
+              }} className="BoxImageCreateAccout">                        
               </div>
               }
-              <label className="labelFileUploaed" htmlFor="InptFileCreateAccount" >Imagen de perfil</label>
+              <label className="InpSubmit1" htmlFor="InptFileCreateAccount" >Imagen de perfil</label>
               <input  onChange={handleImageChange} className="InpFileStyle" type="file" name="" id="InptFileCreateAccount" />
           </div>
           <div className='DataPerfilBox'>
           <label htmlFor="InpPerfilInMail">Correo electronico</label>
           <input className='InpStyle' type="email" defaultValue={user.UserEmail} readOnly={true}/>
 
-            <input type="checkbox" id="id_Active"/>
+            <div className='checkclass'>
+            <label className='Lblestado'>Estado: </label>
+              <input className="incheck" type="checkbox" id="id_Active"/>
+            </div>
           <button className='InpSubmit' type='button' onClick={updateUser}>Editar</button>
           
           </div>

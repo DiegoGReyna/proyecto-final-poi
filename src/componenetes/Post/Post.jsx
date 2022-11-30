@@ -20,10 +20,17 @@ export const Post = (props) => {
                 </div>
                 <div className='PostMessage'>
                     { props.PostType == 1 ?
-                    <p>{props.PostContent}</p>
-                    :
-                    <img src={props.PostContent} alt="" width="60px" height="60px"/>
+                        <p>{props.PostContent}</p>
+                        :
+                        props.PostType == 2 ?
+                        <img src={props.PostContent} alt="" width="60px" height="60px"/>
+                        :
+                        props.PostType == 3 ?
+                        <a href={props.PostContent} target="_blank">File</a>
+                        :
+                        <a href={props.PostContent} target="_blank">Ubicación</a>
                     }
+
                 </div>
         </div>
 

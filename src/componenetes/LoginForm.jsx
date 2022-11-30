@@ -26,7 +26,7 @@ const  LoginForm = () => {
         <div className='ContainerLogin'>
             <form onSubmit={handleSubmit}>
                 <div className='BoxTitle'>
-                    <h2 className='TitleText'>Inicar sesión</h2>
+                    <h2 className='TitleText'>Iniciar sesión</h2>
                 </div>
                 <div className='DataLoginBox'>
                     <label htmlFor="InpLogInMail">Correo electrónico</label>

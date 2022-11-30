@@ -2,7 +2,7 @@
 import './MainGroupPage.css'
 import { NavBarMainGroup } from '../../componenetes/NavBarMainGroup/NavBarMainGroup'
 
-
+import { TareasPage } from "../TareasPage/TareasPage";
 import { Routes,useNavigate,Route } from 'react-router-dom'
 import { onSnapshot, collection} from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
@@ -32,6 +32,7 @@ export const MainGroupPage = () => {
       <NavBarMainGroup nombreGrupo={user.UserCarrera} />
       
       <Routes>
+
        <Route path="Posts" element={<MainGroupPostsPage />} /> 
        <Route path="Assignments/*" element={<TareasPage 
                 
