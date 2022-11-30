@@ -28,23 +28,25 @@ const GroupMembers = () => {
         await onSnapshot(collection(db, 'users'), (snapshot) =>{
             setAddMember(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         });
-        addMember.forEach((member) =>{
-            console.log(member);
+        await addMember.forEach(async (member) =>{
             if(member.UserEmail == correoMember && member.uid != currentUser.uid){
-                updateDoc(doc(db, "groupMembers", groupId), {
+                await updateDoc(doc(db, "groupMembers", groupId), {
                     members: arrayUnion({  
                         id: member.uid,
                         MemberName: member.UserName,
+                        photoURL: group.photoURL,
                     })
                 });
-                updateDoc(doc(db, "userGroups", member.uid), {
+                await updateDoc(doc(db, "userGroups", member.uid), {
                     groups: arrayUnion({
                         uid : groupId,
                         groupName: group.groupName,
+                        photoURL: group.photoURL,
                     })
                 });
             }
         });
+        setcorreoMember("");
         setModal(!modal)
     }
     

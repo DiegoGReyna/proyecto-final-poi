@@ -36,7 +36,7 @@ const DashboardSubGrups = () => {
             setChats(doc.data().groups);
         })
         return unSub;
-    }, [currentUser.uid]);
+    }, []);
 
     const AddGroup = async () =>{
         const chatId = uuid();

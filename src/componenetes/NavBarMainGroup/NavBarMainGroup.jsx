@@ -8,7 +8,7 @@ export const NavBarMainGroup = (props) => {
 
             <NavLink className='TeamNavLinkNombreEquipo' to='Posts'>
                 <div className='ImgTeam'></div> <p>{props.nombreGrupo}</p></NavLink>
-            <NavLink className='TeamNavLink' to=''>Tareas</NavLink>
+                <NavLink className='TeamNavLink' to='Tareas/DashBoard' state={{ groupName: props.groupName }} >Tareas</NavLink>
             {/* <NavLink className='TeamNavLink' to='SubGrupoChat' state={{ groupId: props.groupId }}>Chat</NavLink> */}
             {/* <NavLink className='TeamNavLink' to='GroupMembers' state={{ groupId: props.groupId }}>Integrantes</NavLink> */}
 

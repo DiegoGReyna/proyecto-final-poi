@@ -29,9 +29,7 @@ const ChatCallBarr = (props) => {
   pc.onaddstream = (event => friendsVideo.srcObject = event.stream);
   
 
-
   const sendMeeting = async (uid,data) => {
-    console.log(data);
       const coll = collection(db, "meetings");
       const docSnap = await getDoc(doc(coll, chatUser));
       if(docSnap._document == null){
@@ -98,7 +96,6 @@ const ChatCallBarr = (props) => {
     const readMeeting = async (data) => {
       if(data != undefined && data.info != data.id){
         var msg = JSON.parse(data.info);
-        console.log(msg);
         var sender = data.id;
         if (sender != uid) {
             if (msg.ice != undefined)
@@ -120,7 +117,7 @@ const ChatCallBarr = (props) => {
       readMeeting(doc.data());
     });
     return newUser
-  }, 5000);
+  }, []);
 
   return (
     <div className='Box_ChatCallBarr'>
