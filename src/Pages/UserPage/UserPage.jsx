@@ -8,7 +8,7 @@ import RenderedMessages from '../../componenetes/RenderedMessages/RenderedMessag
 import { Perfil } from '../../componenetes/Perfil/Perfil';
 import { Tareas } from '../Tareas/Tareas';
 import { useNavigate } from 'react-router-dom'
-import { onSnapshot, collection} from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
 import {db} from "../../firebase"
 import { MainGroupPage } from '../MainGroupPage/MainGroupPage';
@@ -18,7 +18,6 @@ import { AuthContext } from "../../context/AuthContext";
 const UserPage = () => {
     const [user, setUser] = useState([]);
     const {currentUser} = useContext(AuthContext);
-    const navigate=useNavigate();
 
     useEffect(() =>{
         const newChat = onSnapshot(collection(db, 'users'), (snapshot) =>{
@@ -30,7 +29,7 @@ const UserPage = () => {
         });
             return newChat
       }, [currentUser]);
-    
+
     return (
         <div className='ContainerUserPage'>
             <NavBarMain 
@@ -43,7 +42,7 @@ const UserPage = () => {
                 <Route path="ChatEquipo/*" element={<RenderedMessages />} />
                 <Route path="Perfil" element={<Perfil/>} />
                 <Route path="Tareas/*" element={<TareasPage />} />
-                <Route path={user.UserCarrera+"/*"} element={<MainGroupPage />} />
+                <Route path={user.UserCarrera+"/*"} element={<MainGroupPage carrera={user.UserCarrera}/>} />
             </Routes>
             
         </div>

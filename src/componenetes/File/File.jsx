@@ -9,11 +9,6 @@ export const File = (props) => {
         </span>
       </button>
       <p>{props.FileName}</p>
-      <button>
-        <span className="material-symbols-outlined">
-            delete
-         </span>
-      </button>
     </div>
 
   )

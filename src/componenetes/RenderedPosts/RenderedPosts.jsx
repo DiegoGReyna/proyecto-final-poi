@@ -1,4 +1,4 @@
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, collection } from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
 import './RenderedPosts.css'
 import { AuthContext } from "../../context/AuthContext";
@@ -6,27 +6,29 @@ import { db } from "../../firebase";
 import { Post } from "../Post/Post";
 
 
-export const RenderedPosts = () => {
+export const RenderedPosts = (props) => {
   const [posts, setPosts] = useState([]);
   const {currentUser} = useContext(AuthContext);
   const [user, setUser] = useState([]);
 
   useEffect(() =>{
-    const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
-      setUser(doc.data());
+    onSnapshot(collection(db, 'users'), (snapshot) =>{
+        snapshot.docs.map(doc => 
+            doc.data().uid == currentUser.uid ?
+            setUser((doc.data()))
+            :
+            null)
     });
-    return newUser
-  }, [currentUser.uid]);
+  }, [currentUser]);
+
 
   useEffect (() => {
-    const unSub = onSnapshot(doc(db, "carreras", "LMAD"), (doc) => {
+    onSnapshot(doc(db, "carreras", props.carrera), (doc) => {
         doc.exists() && setPosts(doc.data().posts)
     })
 
-    return () => {
-        unSub()
-    }
   }, [currentUser.uid])
+
 
   return (
     <div className='Container_RenderedPosts'>

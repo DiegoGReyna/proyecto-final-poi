@@ -44,6 +44,8 @@ const CreateAccount = () => {
                             photoURL : downloadURL
                         });
                         await setDoc(doc(db,"userGroups", res.user.uid),{});
+                        await setDoc(doc(db,"userTareasPendientes", res.user.uid),{});
+                        await setDoc(doc(db,"userTareasTerminadas", res.user.uid),{});
                         navigate('/UserPage');
                     });
                 }
