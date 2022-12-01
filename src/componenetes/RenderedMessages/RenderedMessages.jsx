@@ -1,4 +1,4 @@
-import { doc, onSnapshot, collection, query, where } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState, useContext} from "react";
 import './RenderedMessages.css'
 import MessagesFromOthers from '../MessagesFromOthers/MessagesFromOthers';

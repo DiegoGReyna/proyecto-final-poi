@@ -1,37 +1,71 @@
 import React, { useEffect, useState, useContext} from "react";
 import './Tareas.css'
-import { NavLink, useNavigate,Routes, Route} from 'react-router-dom'
-import { doc, onSnapshot, collection } from "firebase/firestore";
+import { NavLink, Routes, Route} from 'react-router-dom'
+import { arrayUnion, doc, collection, updateDoc, onSnapshot } from "firebase/firestore";
+import { v4 as uuid } from "uuid";
 import { db } from "../../firebase";
-import { useLocation } from 'react-router-dom';
-import {AssignmentRow} from '../../componenetes/AssignmentRow/AssignmentRow.jsx'
-import { CreateAssignmentModal } from '../../componenetes/Modales/CreateAssignmentModal/CreateAssignmentModal';
 import { CompletedAssignmentsList } from "../../componenetes/CompletedAssignmentsList/CompletedAssignmentsList";
 import { ToDoAssignmetsList } from "../../componenetes/ToDoAssignmetsList/ToDoAssignmetsList";
 import { UnderRevisionAssignmetsList } from "../../componenetes/UnderRevisionAssignmetsList/UnderRevisionAssignmetsList";
 import { AuthContext } from "../../context/AuthContext";
 export const Tareas = (props) =>{
-  //   const location = useLocation();
-  // const { groupId } = location.state;
-  // const [ groupInfo, setgroupInfo] = useState([]);
 
-  // useEffect (() => {
-  //   const unSub = onSnapshot(doc(db, "groupMembers", groupId), (doc) => {
-  //     setgroupInfo(doc.data())
-  //   })
-  // }, [groupId])
   const {currentUser} = useContext(AuthContext);  
+  const [modal ,setModal]=useState(false);
   const [user, setUser] = useState([]);
+  const [nombre, setNombre ] = useState("");
+  const [descripcion, setDescripcion ] = useState("");
+  const [fecha, setFecha ] = useState("");
+  const [users, setUsers ] = useState([]);
+
   useEffect(() =>{
-    const newUser = onSnapshot(doc(db, 'users', currentUser.uid), (doc) =>{
-      setUser(doc.data());
+    const newChat = onSnapshot(collection(db, 'users'), (snapshot) =>{
+        snapshot.docs.map(doc => 
+            doc.data().uid == currentUser.uid ?
+            setUser((doc.data()))
+            :
+            null)
     });
-    return newUser
-  }, [currentUser.uid]);
+        return newChat
+  }, [currentUser]);
 
+  useEffect(() =>{
+    onSnapshot(collection(db, 'users'), (snapshot) =>{
+        snapshot.docs.map(doc => 
+            setUsers(current => [...current, doc.data()])
+        );
+    });
+  }, []);
 
+  const toggleModal=()=>{
+    setModal(!modal)
+  }
 
-    const [openModalAssignment,setOpenModalAssignment]=useState(false);
+  const createTarea=()=>{
+    if(nombre!="" && descripcion!=""&&fecha!=""){
+      var idTarea = uuid();
+      users.forEach(async (u) => {
+        if(u.uid != currentUser.uid && u.UserCarrera == user.UserCarrera){
+          await updateDoc(doc(db, "userTareasPendientes", u.uid), {
+            tareas: arrayUnion({
+                id: idTarea,
+                nameTarea: nombre,
+                descriptionTarea: descripcion,
+                date: fecha,
+            }),
+          });
+        }
+      })
+      window.alert("Tarea agregada exitosamente");
+      setModal(!modal);
+      setFecha("");
+      setNombre("");
+      setDescripcion("");
+    }
+    else
+    window.alert("Favor de llenar todos los campos");
+  }
+
     return (
         <div className="BoxListTareas">
             <div className="TittleBoxTareas">
@@ -40,32 +74,50 @@ export const Tareas = (props) =>{
             <div className="ContainerLinksAnbuttonsAssignmets">
             <NavLink className="LinkListAssignment"  to='ToDo' >Pendientes</NavLink>
             <NavLink className="LinkListAssignment" to='Completed' >Revisadas</NavLink>
-            <NavLink  className="LinkListAssignment" to='UnderRevision' >Por revisar</NavLink>
 
-            <button  className="ButtonListAssignment"  style={{display:props.display }} onClick={()=>{
-                 setOpenModalAssignment(true);
-            }}>Agregar Tarea</button>
+            <button  className="ButtonListAssignment"  style={{display:props.display }} onClick={toggleModal}>Agregar Tarea</button>
           </div>
-
-            {/* <div className="ListasTareas">
-                < AssignmentRow 
-                nombreSubGrupo={groupInfo.groupName}
-                groupId={groupInfo.uid}
-
-                AssignmentName="Porque el capitalismo es el culpable de todos nuestros males tarea 1"/>
-                
-            </div> */}
             <Routes>
-                
-              
             <Route path="ToDo" element={<ToDoAssignmetsList />} />
-            <Route path="Completed" element={<CompletedAssignmentsList />} />
-            <Route path="UnderRevision" element={<UnderRevisionAssignmetsList />} />
-                
+            <Route path="Completed" element={<CompletedAssignmentsList />} />                
             </Routes>
 
 
-            {openModalAssignment&& <CreateAssignmentModal CloseModal={setOpenModalAssignment} />}
+            { modal && (
+              <div className='BackGroundModal'>
+
+              <div className='CardMoadal'>
+                  
+                  <div className='FormModal'>
+                      <div className='ContainerButonX'>
+                          <button type="button" className="ModalCalcelButton" onClick={toggleModal} ><span className="material-symbols-outlined">close</span></button>
+                      </div>
+                      <div className='ContainerInputLabelModal'> 
+                      <label className='LebelModal'  htmlFor="Id_NameAssigment">Nombre de la tarea:</label>
+                      <input className='InpStyleModal' type="text" name="" id="Id_NameAssigment" placeholder='Ingrese un nombre a la tarea' onChange={e=>setNombre(e.target.value)} value={nombre}/>
+                      </div>
+      
+                      <div className='ContainerInputLabelModal'>   
+                      <label className='LebelModal' htmlFor="Id_DescriptionAssigment">Descripcion de la tarea:</label>
+                      <input  className='InpStyleModal' type="text" name="" id="Id_DescriptionAssigment" placeholder='Ingrese una descripcion a la tarea' onChange={e=>setDescripcion(e.target.value)} value={descripcion}/>
+                      </div>
+      
+                      <div className='ContainerInputLabelModal'>
+                      <label className='LebelModal' htmlFor="IdDueDate">Fecha de entrega:</label>
+                      <input  className='InpStyleModal'   type="date" id="IdDueDate"
+                                  name="meeting-time" onChange={e=>setFecha(e.target.value)} value={fecha}></input>
+                      </div>
+      
+                     <div className='Container2Buttons'>
+                     <button  name='cancel' className='ButtonsModal' onClick={toggleModal} >Cancelar</button>
+                      <button  name='submit' className='ButtonsModal submit' onClick={createTarea} >Asignar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            )
+
+            }
         </div>    
   )
 }

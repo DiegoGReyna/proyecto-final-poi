@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
-import { arrayUnion, doc, collection, Timestamp, updateDoc, getDoc, setDoc, firestore,onSnapshot } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
 
 
 export const TextBarMainGroup = () => {

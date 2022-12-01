@@ -47,7 +47,8 @@
 }
 
 .ImgTeam {
-    width: 5rem;
+    display: none;
+    width: 10000rem;
     height: 5rem;
     border-radius:100%;
     border: 4px solid var(--Color6);
