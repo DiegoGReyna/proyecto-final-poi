@@ -20,7 +20,8 @@ const NavBarSubgrup = (props) => {
 
     //    </div>
         <header className='BoxNavBarTeam'>
-             <NavLink className='TeamNavLinkNombreEquipo' state={{ groupId: props.groupId }} to='Posts'>
+             <NavLink className='TeamNavLinkNombreEquipo' state={{ groupId: props.groupId }}>
+                
                 <div className='ImgTeam'><img src={props.groupPhoto} alt="UserImage" width="60" height="60px"/></div> <p>{props.nombreSubGrupo}</p></NavLink>
         <nav ref={navRef}>
                    

@@ -26,6 +26,7 @@
     padding: 0;
 }
 .ContainerPerfil {
+    overflow: auto;
     display: flex;
     background-color: var(--Color2);
     width: 70rem;
@@ -34,13 +35,17 @@
     border-radius: 2.5rem;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    /* padding: 30px; */
+    justify-content: center;
 }
 .FormPerfil{
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
 
 }
 .InpSubmit1{
@@ -172,7 +177,7 @@
     padding: 1px;
 }
 
-@media (max-width: 375) {
+@media (max-width: 375px) {
     .ContainerPerfil {
         display: flex;
         background-color: var(--Color2);
@@ -234,7 +239,7 @@
     }
     .DataPerfilBox {
         /* height: 80%; */
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -297,7 +302,7 @@
         padding: 0rem;
     }
     .ContainerImgPerf{
-        width: 40rem;
+        width: auto;
         height: auto;
         display: flex;
         justify-content: center;
@@ -333,7 +338,8 @@
         border-radius: 2.5rem;
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        
+        justify-content: center;
     }
     .FormPerfil{
         align-items: center;
@@ -448,7 +454,7 @@
         padding: 0rem;
     }
     .ContainerImgPerf{
-        width: 40rem;
+        width: auto;
         height: auto;
         display: flex;
         justify-content: center;
@@ -472,4 +478,82 @@
         padding: 1px;
     }
     
+}
+@media(max-width:920px ){
+    .DataPerfilBox{
+        width: 100%;
+    }
+    .InpStyle {
+        width: 100%;
+        box-shadow: 0px 0px 10px 5px #000000;
+        border-radius: 10px;
+        height: 3.5rem;
+        background-color: var(--Color6);
+        margin: 1rem 0 1rem 0;
+        
+       
+        font-size: 1.2rem;
+       
+    }
+    .DataPerfilBox label {
+        font-weight: bold;
+        font-size: 3vw;
+        color: whitesmoke;
+    }
+
+    .ContainerPerfil {
+       
+        width: 80%;
+        
+        border-radius: 2.5rem;
+       
+        padding: 2rem;
+     
+    }
+
+
+}
+
+@media(max-width:520px){
+    .PerfilText {
+       display: flex;
+        height: auto;
+        font-size: 8vw;
+        margin-bottom: 1rem;
+    }
+}
+@media(max-width:360px ){
+    .DataPerfilBox label {
+        font-weight: bold;
+        font-size: 5vw;
+        color: whitesmoke;
+    }
+
+    .InpSubmit1 {
+        height: 4rem;
+        width: 100%;
+
+        font-size: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+}
+@media (max-width:280px) {
+    .ContainerPerfil {
+        display: flex;
+        background-color: var(--Color2);
+        width: 70%;
+        height: 51rem;
+        box-shadow: 0px 4px 40px 10px rgb(0 0 0 / 60%);
+        border-radius: 2.5rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        justify-content: center;
+    }
 }

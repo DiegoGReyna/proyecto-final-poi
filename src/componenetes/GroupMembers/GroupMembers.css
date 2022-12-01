@@ -107,7 +107,7 @@
     display: flex;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
 }
@@ -402,7 +402,7 @@
     .Box_ButtonAgregarSubGrupo{
         box-shadow: 0px 6px 5px rgb(0 0 0 / 50%);
         width: 100%;
-        z-index: 10;
+        /* z-index: 10; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -418,7 +418,7 @@
     .Box_ButtonAgregarSubGrupo{
         box-shadow: 0px 6px 5px rgb(0 0 0 / 50%);
         width: 100%;
-        z-index: 10;
+        /* z-index: 1; */
         display: flex;
         align-items: center;
         justify-content: center;
