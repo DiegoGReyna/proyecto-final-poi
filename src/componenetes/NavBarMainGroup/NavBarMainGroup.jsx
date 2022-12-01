@@ -7,7 +7,7 @@ export const NavBarMainGroup = (props) => {
     <div className='BoxNavBarTeam'>
 
             <NavLink className='TeamNavLinkNombreEquipo' to='Posts'>
-                <div className='ImgTeam'></div> <p>{props.nombreGrupo}</p></NavLink>
+               <p>{props.nombreGrupo}</p></NavLink>
 
             <NavLink className='TeamNavLink'  to='Assignments/DashBoard'>Tareas</NavLink>
 
