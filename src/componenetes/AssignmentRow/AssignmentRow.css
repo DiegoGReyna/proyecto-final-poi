@@ -68,6 +68,14 @@
 }
 
 @media (max-width: 520px) {
+    .ContainerAssignmentRow .InpSubTareas{
+        height: 20px;
+    width: auto ;
+    font-size: 1.2rem;
+ 
+    margin-right: 0;
+    border-radius: 0.2rem;
+    }
     .ContainerAssignmentRow {
         background-color: var(--Color2);
         height: auto;
@@ -85,7 +93,16 @@
 
     }
 }
-
+@media (max-width:360px){
+    .ContainerAssignmentRow .InpSubTareas{
+        height: 15px;
+    width: auto ;
+    font-size: 1rem;
+ 
+    margin-right: 0;
+    border-radius: 0.2rem;
+    }
+}
 @media (max-width: 280px){
     .ContainerAssignmentRow label{
         font-size: 4vw;
