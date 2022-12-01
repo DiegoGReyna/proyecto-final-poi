@@ -1,0 +1,93 @@
+
+/* .BoxListTareas {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction:column;
+   
+} */
+
+/* .TareaText {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 4.5rem;
+} */
+
+
+
+/* .TittleBoxTareas {
+    height: 10%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+} */
+
+.ContainerAssignmentRow {
+    background-color: var(--Color2);
+    height: 5rem;
+    width: 100%;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 5px 15px rgb(0 0 0 / 50%);
+    padding: 1.5rem;
+    justify-content: space-between;
+
+}
+
+.ContainerAssignmentRow label{
+    /* width: 100%; */
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 1.5vw;
+    display: flex;
+}
+
+.InpSubTareas {
+    height: 2rem;
+    width: 6rem;
+    color: var( --Color1);
+    background-color: var(--Color6);
+    transition: all 0.5s;
+    font-size: 0.8vw;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 0.5rem;
+    border-radius: 0.3rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 520px) {
+    .ContainerAssignmentRow {
+        background-color: var(--Color2);
+        height: auto;
+        width: 100%;
+        border-radius: 0.5rem;
+       
+        box-shadow: 0px 5px 15px rgb(0 0 0 / 50%);
+        padding: 0.5rem;
+        
+    }
+    .ContainerAssignmentRow label{
+        font-size: 3vw;
+    }
+    .InpSubTareas{
+
+    }
+}
+
+@media (max-width: 280px){
+    .ContainerAssignmentRow label{
+        font-size: 4vw;
+    }
+}
