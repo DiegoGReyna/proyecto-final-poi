@@ -1,37 +1,63 @@
-import React from 'react'
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useEffect, useState, useContext} from "react";
 import './RenderedMessages.css'
 import MessagesFromOthers from '../MessagesFromOthers/MessagesFromOthers';
 import MessaByUser from '../MessaByUser/MessaByUser';
+import { useLocation } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
+import { db } from "../../firebase";
 
-function RenderedMessages() {
+const RenderedMessages = () => {
+    const [messages, setMessages] = useState([]);
+    const location = useLocation();
+    const { userToUID } = location.state;
+    const {currentUser} = useContext(AuthContext);
+    var chatUser = currentUser.uid + "-" + userToUID;
+    const [userTo, setUserTo] = useState([]);
+
+    useEffect(() =>{
+        const newUser = onSnapshot(doc(db, 'users', userToUID), (doc) =>{
+          setUserTo(doc.data());
+        });
+        return newUser
+      }, [userToUID]);
+
+      useEffect (() => {
+        const unSub = onSnapshot(doc(db, "chats", chatUser), (doc) => {
+            doc.exists() && setMessages(doc.data().messages);
+        })
+
+        return () => {
+            unSub()
+        }
+    }, [userToUID])
+
     return (
         <div className='Container_RenderedMessages'>
             <div className='box_Messages'>
-                <MessagesFromOthers 
-                userName="Nombre de usuario"
-                sendedTime="2:30pm"
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum."
-                userImage="perro"
-                />
-                <MessaByUser 
-                sendedTime="2:35pm"
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum."
-             
-                />
-                <MessaByUser 
-                sendedTime="2:36pm"
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum."
-               
-                />
-                <MessagesFromOthers userName="Nombre de usuario"
-                sendedTime="2:40pm"
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum."
-                />
-                <MessagesFromOthers userName="Nombre de usuario"
-                sendedTime="2:50pm"
-                text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nam similique, consectetur recusandae praesentium id eaque eum."
-                userImage="perro"
-                />
+            {
+                messages != undefined ?
+                    messages.map(message => 
+                        message.senderId == currentUser.uid ?
+                        <MessaByUser 
+                        sendedTime={message.date}
+                        content={message.messageContent}
+                        messageType={message.messageType}
+                        isEncrypted={message.isMessageEncrypted}
+                        />
+                        : 
+                        <MessagesFromOthers 
+                        userName={userTo.UserName}
+                        sendedTime={message.date}
+                        content={message.messageContent}
+                        userImage={userTo.photoURL}
+                        messageType={message.messageType}
+                        isEncrypted={message.isMessageEncrypted}
+                        />
+                    )
+                :
+                null
+            }
                 
             </div>
             

@@ -1,13 +1,24 @@
 import './SubGrupChatPage.css';
-import RenderedMessages from '../../componenetes/RenderedMessages/RenderedMessages'; 
-import TextBar from '../../componenetes/TextBar/TextBar';
-export default function SubGrupChatPage() {
+import RenderedGroupMessages from '../../componenetes/RenderedGroupMessages/RenderedGroupMessages'; 
+import TextBarGroup from '../../componenetes/TextBarGroup/TextBarGroup';
+import { useLocation } from 'react-router-dom';
+
+const SubGrupChatPage = () => {
+    const location = useLocation();
+    const { groupId } = location.state;
+
     return (
         <div className='Container_Chat'>
-            <RenderedMessages />
-            <TextBar />
+            <RenderedGroupMessages 
+            groupId = {groupId}
+            />
+            <TextBarGroup 
+            groupId = {groupId}
+            />
         </div>
     
         
     )
 }
+
+export default SubGrupChatPage

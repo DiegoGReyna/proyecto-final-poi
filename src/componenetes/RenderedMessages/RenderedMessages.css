@@ -28,11 +28,21 @@
     
 }
 .box_Messages{
-    width: 100%;
+    /* width: 100%;
     height: 95%;
-    /* background-color: black; */
+    /* background-color: black; 
     display: grid;
     grid-template-columns: 100%;
     overflow: auto;
     padding: 1rem;
-}
+*/
+
+width: 100%;
+height: 95%;
+display: flex;
+grid-template-columns: 100%;
+overflow: auto;
+padding: 1rem;
+flex-direction: column;
+
+} 

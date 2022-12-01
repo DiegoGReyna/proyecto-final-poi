@@ -3,8 +3,10 @@
     width: 15%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     align-items: center;
+    
 }
 .Container_ChatsButtons{
     height: 90%;
@@ -26,7 +28,12 @@
     align-items: center;
 
 }
-
+.Button_Nav button{
+font-family: 'Poppins', sans-serif;
+    font-size: 0.75vw;
+    color: var(--Color6);
+    font-weight:bold;
+}
 .Button_Nav{
     height: 50%;
     width: 70%;
@@ -47,7 +54,7 @@
 }
 .modal{
     display: flex;
-    transition: all 0.5s;
+    
 }
 .overlay {
     width: 100vw;
@@ -61,7 +68,7 @@
 
 .overlay {
     background: rgba(62, 101, 133, 0.74);
-    transition: all 0.5s;
+    
 }
 
 .modal_content {
@@ -69,7 +76,7 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    overflow: auto;
     background: var(--Color3);
     padding: 14px 28px;
     display: flex;
@@ -124,5 +131,175 @@
     border: none;
     background-color: var(--Rojo);
 }
+.NavChatsPriv{
+    height: 100%;
+}
 
+header .nav-button{
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    visibility: hidden;
+    opacity: 0;
+}
+.button-close{
+    width: 100%;
+    display: flex;
+    display: none;
+    flex-direction: row-reverse;
+}
+.button-close button{
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    border: none;
+    background-color: var(--Rojo);
+    width: 5%;
+}
+@media (max-width: 1024px){
+    
 
+    .Container_PrivChatButton {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-content: space-evenly;
+        min-height: 8.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .Container_ChatsButtons{
+        height: 90%;
+        overflow: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: stretch;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: flex-end;
+    }
+    .NavChatsPriv {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .Container_Button {
+        height: 80%;
+        border-radius: 1rem;
+    }
+    .Container_Button button{
+        transition: all 0.4s;
+        width: 100%;
+        height: 100%;
+        background-color: var(--Color2_5);
+        border-radius: 1rem;
+    }
+
+    .Container_NavBarChats{
+        height: 10%;
+        position: fixed;
+        top: 75%;
+        background: transparent;
+    }
+    header .nav-button{
+        font-family: 'Poppins', sans-serif;
+        
+    color: var(--Color6);
+    font-weight:400;
+    
+    width:100%;
+    font-size: 1.5rem;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header nav{
+        width: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: auto;
+       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* gap: 1rem; */
+        background-color: var(--Color5);
+        transition: 1s;
+        transform: translateY(-100vh);
+        flex-direction: column-reverse;
+    }
+
+    header .PleasWork{
+        transform: none;
+    }
+    .button-close{
+        display: flex;
+    }
+    
+}
+
+@media (max-width:360px ) {
+    .button-close button{
+        width: 10%;
+    }
+    .Container_Button .nav-button{
+        
+        margin: 0 0 0 2rem;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        width: 6.5rem;
+        height: auto;
+    }
+}
+@media (max-width:280px) {
+    .Container_Button .nav-button{
+        
+        margin: 0 0 0 3rem;
+        font-size: 1rem;
+    }
+}
+@media (max-height:560px ) {
+    .Container_Button .nav-button {
+       
+        font-size: 1rem;
+        
+    }
+}
+
+@media (max-height:250px ) {
+    .Container_Button .nav-button {
+       
+        font-size: 1rem;
+        border-radius: 2px;
+        margin: 0 0 0 4rem;
+        height: 10rem;
+    }
+}
+
+@media (max-height: 1280px) {
+
+    .modal_content{
+        height: auto;
+    }
+}
+
+@media (max-height: 1368px){
+
+    .ContainerImgCreateAccount{
+        padding-top: 1%;
+    }
+    .BoxImageCreateAccout{
+        display: flex;
+    }
+}
+@media (max-width: 900px){
+    .modal_content{
+        height: auto;
+    }
+}

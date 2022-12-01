@@ -1,0 +1,95 @@
+.Container_TextBar{
+    
+    width: 80%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Box_TextBar{
+    width: 100%;
+    background-color: var(--Color1);
+    height: 60%;
+    border-radius: 1.5rem;
+    box-shadow: 0px 4px 14px 9px rgba(0, 0, 0, 0.5)
+}
+
+.Form_TextBar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.Button_SendMassage{
+    background-image: url(../../img/send-fill.svg);
+    background-size: 100% 100%;
+    width: 8rem;
+    height: 60%;
+    transition: all 0.4s;
+    cursor: pointer;
+    background-color: var(--Color3);
+    border: none;
+    border-radius: 15px;
+}
+
+
+.Input_File{
+    display: none;
+}
+.Labe_UploadFile{
+    background-image: url(../../img/file-earmark-plus-fill.svg);
+    width: 8rem;
+    height: 60%;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: all 0.4s;
+    background-color: var(--Color3);
+    border-radius: 15px;
+}
+.Labe_UploadImage{
+    background-image: url(../../img/image-fill.svg);
+    width: 8rem;
+    height: 60%;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: all 0.4s;
+    background-color: var(--Color3);
+    border-radius: 15px;
+}
+
+.Button_SendLocation{
+    background-image: url(../../img/geo-alt-fill.svg);
+    width: 8rem;
+    height: 60%;
+    background-size: 100% 100%;
+    transition: all 0.4s;
+    background-color: var(--Color3);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    
+}
+button:hover{
+    background-color: var(--Color5);
+}
+.Container_TextBar label:hover{
+    background-color: var(--Color5);
+}
+.Input_Text{
+    background-color: var(--Color6);
+    border: none;
+    height: 60%;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 65%;
+}
+.Input_Text::placeholder{
+    color: var(--Color5);
+    text-align: center;
+}
+

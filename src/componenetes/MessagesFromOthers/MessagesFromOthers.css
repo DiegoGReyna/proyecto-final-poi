@@ -10,7 +10,7 @@
 .Box_MessagesFromOthers{
     
     width: 50%;
-    height: 15rem;
+    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,6 +58,10 @@
     height: 75%;
     font-family: 'Poppins', sans-serif;
     font-size: 1vw;
+}
+.Box_MessagesFromOthers_Text img{
+    width: 100%;
+    height: 100%;
 }
 .Box_MessagesFromOthers_UserImage img{
     width: 7vw;

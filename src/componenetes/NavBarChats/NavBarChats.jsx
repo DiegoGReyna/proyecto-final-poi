@@ -1,71 +1,78 @@
-import React,{useState} from 'react'
-import './NavBarChats.css'
-import PrivChatButton from '../PrivChatButton/PrivChatButton'
-function NavBarChats() {
+import { doc, onSnapshot, collection } from "firebase/firestore";
+import React, { useEffect, useState, useContext} from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+import {db} from "../../firebase"
 
-  const [modal ,setModal]=useState(false);
-  const toggleModal=()=>{
-    setModal(!modal)
-  }
+import PrivChatButton from '../PrivChatButton/PrivChatButton'
+import { useRef } from "react";
+import './NavBarChats.css'
+const NavBarChats = () => {
+  const ChatNav =useRef();
+ 
+  const [chats, setChats] = useState([]);
+    const {currentUser} = useContext(AuthContext);
+    const {dispatch} = useContext(ChatContext);
+
+    useEffect(() =>{
+      const newChat = onSnapshot(collection(db, 'users'), (snapshot) =>{
+      setChats(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
+      });
+      return newChat
+    }, [currentUser.uid]);
+
+ 
+    const navRef =useRef();
+    const showNavBar =()=>{
+        navRef.current.classList.toggle("PleasWork");
+        
+    }
   return (
-    <div className='Container_NavBarChats'>
-      {modal && (
-        <div className='modal'>
-        <div className='overlay'></div>
-        <div className='modal_content'>
-          <div className='Container_CancelModal'>
-            <button
-            className='Button_Cancel'
-              onClick={toggleModal}
-            >X
+    <header className='Container_NavBarChats'>
+      <nav  className="NavChatsPriv"  ref={navRef}>
+      <div  className='nav-button button-close' >
+            <button 
+              onClick={showNavBar}
+             
+             >
+             <span className="material-symbols-outlined">
+                        close
+                        </span>
+            </button>
+            </div>
+
+          <div className='Container_ChatsButtons'>
+
+          {/*Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+                  <div>{chat[1].UserName}</div>
+          ))*/}
+
+          {
+            chats.map(chat => 
+              chat.uid != currentUser.uid ?
+              <PrivChatButton onClick={showNavBar}
+              userName={chat.UserName}
+              imagen={chat.photoURL}
+              uid ={chat.uid}
+              />
+              : null
+              )
+          }
+         
+
+
+          </div>
+          
+      </nav>
+      <div className='Container_Button'>
+            <button 
+               onClick={showNavBar}
+              className='nav-button'>
+               Ver chats
             </button>
           </div>
-          <h2 className='TitleText' >Agregar chat</h2>
-          <form className='Form_Modal' action="">
-            
-            <label htmlFor="Id_Email_AgregarChat">Correo electronico</label>
-            <input placeholder='Ingrese un correo electronico' className='InpStyle' type="email" name="" id="Id_Email_AgregarChat" />
-            <button  className='Button_Nav' 
-            onClick={toggleModal}
-            type="submit">Agregar a chat</button>
 
-          </form>
-        </div>
-      </div>
-      )}
-      
-      <div className='Container_Button'>
-        <button 
-          onClick={toggleModal}
-          className='Button_Nav'>
-          Agregar chat
-        </button>
-      </div>
-      <div className='Container_ChatsButtons'>
-      <PrivChatButton 
-      userName="Nombre de usuario"
-      imagen='perro'
-      />
-      <PrivChatButton 
-      userName="usuario 1"
-      imagen='perro_4'
-      />
-      
-      <PrivChatButton 
-       userName="usuario 2"
-       imagen='perro_2'
-       />
-      <PrivChatButton 
-       userName="usuario 3"
-       imagen='perro_3'
-      />
-      <PrivChatButton 
-       userName="usuario 4"
-       imagen='perro_2'
-      />
-      
-      </div>
-    </div>
+          </header> 
   )
 }
 

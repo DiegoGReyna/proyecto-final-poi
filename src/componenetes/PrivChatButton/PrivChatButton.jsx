@@ -1,22 +1,19 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
 import './PrivChatButton.css'
-function PrivChatButton(props) {
+import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState, useContext} from "react";
+
+const PrivChatButton = (props) => {
+  
   return (
-    <div className='Container_PrivChatButton'>
-        <Link className='Box_PrivChat' to="PrivChat">
-           
-                <div className='Box_ChatImage'>
-                    <img   src={require(`../../img/${props.imagen}.jpg`)} alt="UserImage" width="60" height="60px"/>
-                </div>
-                <div className='Box_ChatUserName'>
-                        <p>{props.userName}</p>
-                </div>
-            
+    <div className='Container_PrivChatButton' >
+        <Link className='Box_PrivChat' to="PrivChat" state={{ userToUID: props.uid }} >
+            <div className='Box_ChatImage'>
+                <img src={props.imagen} alt="UserImage" width="60" height="60px"/>
+            </div>
+            <div className='Box_ChatUserName'>
+                  <p>{props.userName}</p>
+            </div>
         </Link>
-        <div className='Container_DeleteChatButton'>
-            <button className='Button_Cancel' ></button>
-        </div>
     </div>
   )
 }

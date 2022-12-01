@@ -7,7 +7,7 @@
 }
 .Box_MessagesByUser{
     width: 50%;
-    height: 15rem;
+    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -18,7 +18,7 @@
 .Box_MessagesByUser_TextTime{
     width: 75%;
     background-color: var(--Color4);
-    height: 100%;
+    height: auto;
     box-shadow: 0px 4px 15px 8px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     display: flex;
@@ -31,11 +31,153 @@
     height: 75%;
     font-family: 'Poppins', sans-serif;
     font-size: 1vw;
+    display: inline-block;
+    max-width: 100%;
+    padding: 1rem;
+    word-break: break-all;
 }
+
+.Box_MessagesByUser_Text img{
+    width: 100%;
+    height: 100%;
+}
+
 .Box_MessagesByUser_Time{
     font-size: 0.8vw;
     width: 95%;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
+}
+@media (max-width:1024px ) {
+    .Container_MessagesByUser{
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .Box_MessagesByUser_TextTime{
+        width: 100%;
+       
+        height: auto;
+        box-shadow: 0px 2px 7px 4px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        
+    }
+
+    .Box_MessagesByUser_Time{
+        font-size: 1.5vw;
+
+    }
+
+    .Box_MessagesByUser_Text{
+       
+        font-size: 2vw;
+       
+        padding: 0.2rem;
+       
+    }
+    .Box_MessagesByUser {
+        max-width: 60%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+}
+@media (max-width:520px ) {
+    .Container_MessagesByUser{
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .Box_MessagesByUser_TextTime{
+        width: 100%;
+       
+        height: auto;
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        
+    }
+
+    .Box_MessagesByUser_Time{
+        font-size: 2.5vw;
+
+    }
+
+    .Box_MessagesByUser_Text{
+       
+        font-size: 3vw;
+       
+        padding: 0.2rem;
+       
+    }
+    .Box_MessagesByUser {
+        max-width: 60%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+}
+@media (max-width:360px ) {
+    .Container_MessagesByUser{
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .Box_MessagesByUser_TextTime{
+        width: 100%;
+       
+        height: auto;
+        box-shadow: 0px 1px 3.75px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        
+    }
+
+    .Box_MessagesByUser_Time{
+        font-size: 2.5vw;
+
+    }
+
+    .Box_MessagesByUser_Text{
+       
+        font-size: 3.5vw;
+       
+        padding: 0.2rem;
+       
+    }
+    .Box_MessagesByUser {
+        max-width: 70%;
+        min-width: 50%;
+        width: auto;
+        height: auto;
+    }
+
+}
+
+@media (max-width:280px ) {
+    .Container_MessagesByUser{
+        margin-bottom: 0.2rem;
+        margin-top: 0.2rem;
+    }
+    .Box_MessagesByUser_TextTime{
+        
+        border-radius: 2.5px;
+        
+    }
+
+    .Box_MessagesByUser_Time{
+        font-size: 3vw;
+
+    }
+
+    .Box_MessagesByUser_Text{
+       
+        font-size: 4vw;
+       
+        padding: 0.1rem;
+       
+    }
+    .Box_MessagesByUser {
+        max-width: 75%;
+        width: auto;
+        height: auto;
+    }
+
 }

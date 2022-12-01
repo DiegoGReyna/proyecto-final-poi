@@ -1,0 +1,112 @@
+:root {
+    --Color1: #0B132B;
+    --Color2: #1C2541;
+    --Color2_5:#323D5F;
+    --Color3: #3A506B;
+    --Color4: #3E6585;
+    --Color5: #A8C0DE;
+    --Color6: #D9D9D9;
+    --VerdeFuerte: #2D750C;
+    --VerClaro: #40A611;
+    --Rojo:rgba(142, 41, 41, 1);
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+/* .BoxListTareas {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction:column;
+    
+} */
+
+/* .TareaText {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 4.5rem;
+} */
+
+
+
+/* .ListasTareas{
+
+    
+    width: 100%;
+    height: 66rem;
+    align-items: start;
+    display: grid;
+    grid-template-columns: 100%;
+    overflow: auto;
+    padding: 1rem;
+    gap: 1rem;
+
+} */
+
+/* .TittleBoxTareas {
+    height: 10%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+} */
+
+.Asignacion {
+    background-color: var(--Color2);
+    height: 35px;
+    width: 100%;
+    border-radius: 2rem;
+    display: flex;
+    align-items:center;
+    box-shadow: 0px 5px 15px rgb(0 0 0 / 50%);
+    padding: 15px;
+}
+
+.Asignacion label{
+    width: 100%;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+}
+
+.InpSubTareas {
+    height: 20px;
+    width: 6rem;
+    background-color: var(--Color6);
+    transition: all 0.5s;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 0.5rem;
+    border-radius: 0.3rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
+@media (max-width:360px ) {
+
+    /* .ListasTareas{
+        height: 50rem;
+    } */
+}

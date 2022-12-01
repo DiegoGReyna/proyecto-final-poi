@@ -5,3 +5,12 @@
     align-items: center;
     height: 90%;
 }
+
+@media (max-width:280px ) {
+    .Container_PrivChat {
+       
+        /* padding: 0 3rem 0 0; */
+        
+    }
+    
+}

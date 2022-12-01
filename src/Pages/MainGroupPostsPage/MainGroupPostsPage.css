@@ -1,0 +1,30 @@
+.Container_MainGroupPostsPage{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+}
+
+
+.tilte_Page{
+  text-align: center;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tilte_Page h1{
+  color: var(--Color6);
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2.5vw;
+}
+@media (max-width:520px ) {
+  .Container_MainGroupPostsPage .tilte_Page h1{
+      font-size:5vw;
+  }
+ 
+}

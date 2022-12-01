@@ -1,0 +1,22 @@
+.ContainerTareasPage{
+    text-align: center;
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction:column;
+    padding: 0 2rem;
+}
+
+
+@media (max-width:768px ) {
+    .ContainerTareasPage{
+    
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width:280px ){
+    .ContainerTareasPage {
+        padding: 0.5rem;
+    }
+}
