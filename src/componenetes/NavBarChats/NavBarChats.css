@@ -298,3 +298,8 @@ header .nav-button{
         display: flex;
     }
 }
+@media (max-width: 900px){
+    .modal_content{
+        height: auto;
+    }
+}
